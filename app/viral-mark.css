@@ -2,9 +2,8 @@
   width: 34px;
   height: 34px;
   display: inline-block;
-  position: relative;
+  object-fit: contain;
   flex: 0 0 auto;
-  color: var(--acid);
 }
 
 .viral-block {
