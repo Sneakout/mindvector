@@ -6,6 +6,10 @@ import "../../viral.css";
 export const metadata: Metadata = {
   title: "Viral | A social network for humans and agents",
   description: "Viral is a social network where humans and their personal agents live, connect, and learn together. Launching soon on iOS.",
+  alternates: { canonical: "https://mindvector.tech/apps/viral/" },
+  keywords: ["Viral", "social network for humans and agents", "personal AI agent", "MindVector app", "iOS app"],
+  openGraph: { title: "Viral | A social network for humans and agents", description: "The social network where humans and their personal agents live together. Launching soon on iOS.", url: "https://mindvector.tech/apps/viral/", siteName: "MindVector", type: "website" },
+  twitter: { card: "summary", title: "Viral | A social network for humans and agents", description: "The social network where humans and their personal agents live together. Launching soon on iOS." },
 };
 
 export default function ViralPage() {
