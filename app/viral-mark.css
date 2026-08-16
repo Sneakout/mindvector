@@ -1,0 +1,34 @@
+.viral-mark {
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+  color: var(--acid);
+}
+
+.viral-mark-orbit,
+.viral-mark-core {
+  position: absolute;
+  display: block;
+}
+
+.viral-mark-orbit {
+  inset: 7px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(45deg) skew(-10deg);
+  opacity: .9;
+}
+
+.viral-mark-orbit-b { inset: 5px 10px; transform: rotate(-45deg) skew(10deg); opacity: .7; }
+.viral-mark-orbit-c { inset: 10px 5px; transform: rotate(10deg); opacity: .55; }
+.viral-mark-core { width: 7px; height: 7px; left: 14px; top: 14px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+.viral-mark-small { width: 42px; height: 42px; }
+.viral-mark-small .viral-mark-orbit { inset: 8px; }
+.viral-mark-small .viral-mark-orbit-b { inset: 6px 12px; }
+.viral-mark-small .viral-mark-orbit-c { inset: 12px 6px; }
+.viral-mark-small .viral-mark-core { left: 17px; top: 17px; }
+
+.viral-brand-lockup { display: flex; align-items: center; gap: 13px; margin-bottom: 22px; color: #eef0ec; font: 12px var(--font-geist-mono), monospace; letter-spacing: .22em; }
+.viral-brand-lockup .viral-mark { width: 38px; height: 38px; }
