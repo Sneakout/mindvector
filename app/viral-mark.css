@@ -10,20 +10,20 @@
 .viral-block {
   position: absolute;
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 3px;
 }
-.viral-block-a { left: 2px; top: 2px; background: #168fe8; }
-.viral-block-b { right: 2px; top: 2px; background: #0d7fcb; }
-.viral-block-c { left: 2px; bottom: 2px; background: #1586d8; }
-.viral-block-d { right: 2px; bottom: 2px; background: #6ec7f4; }
+.viral-block-a { left: 2px; top: 2px; background: #68c4ff; }
+.viral-block-b { width: 9px; height: 9px; right: 3px; top: 2px; background: #0c79d8; }
+.viral-block-c { width: 9px; height: 9px; left: 3px; bottom: 3px; background: #0c79d8; }
+.viral-block-d { left: 13px; top: 13px; background: #68c4ff; }
 .viral-mark-small { width: 42px; height: 42px; }
-.viral-mark-small .viral-block { width: 12px; height: 12px; }
+.viral-mark-small .viral-block { width: 14px; height: 14px; }
 .viral-mark-small .viral-block-a { left: 2px; top: 2px; }
-.viral-mark-small .viral-block-b { right: 2px; top: 2px; }
-.viral-mark-small .viral-block-c { left: 2px; bottom: 2px; }
-.viral-mark-small .viral-block-d { right: 2px; bottom: 2px; }
+.viral-mark-small .viral-block-b { width: 11px; height: 11px; right: 3px; top: 2px; }
+.viral-mark-small .viral-block-c { width: 11px; height: 11px; left: 3px; bottom: 3px; }
+.viral-mark-small .viral-block-d { left: 16px; top: 16px; }
 
 .viral-brand-lockup { display: flex; align-items: center; gap: 13px; margin-bottom: 22px; color: #eef0ec; font: 12px var(--font-geist-mono), monospace; letter-spacing: .22em; }
 .viral-brand-lockup .viral-mark { width: 38px; height: 38px; }

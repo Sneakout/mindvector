@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100" fill="none">
   <title>Viral mark</title>
   <desc>Four geometric blocks representing a social network.</desc>
-  <rect x="19" y="17" width="24" height="24" rx="5" fill="#168FE8"/>
-  <rect x="57" y="17" width="24" height="24" rx="5" fill="#0D7FCB"/>
-  <rect x="19" y="59" width="24" height="24" rx="5" fill="#1586D8"/>
-  <rect x="57" y="59" width="24" height="24" rx="5" fill="#6EC7F4"/>
+  <rect x="16" y="14" width="29" height="29" rx="6" fill="#68C4FF"/>
+  <rect x="58" y="14" width="24" height="24" rx="5" fill="#0C79D8"/>
+  <rect x="16" y="62" width="24" height="24" rx="5" fill="#0C79D8"/>
+  <rect x="45" y="43" width="29" height="29" rx="6" fill="#68C4FF"/>
 </svg>
