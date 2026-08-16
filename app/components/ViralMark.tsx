@@ -1,10 +1,10 @@
 export function ViralMark({ small = false }: { small?: boolean }) {
   return (
     <span className={`viral-mark${small ? " viral-mark-small" : ""}`} aria-hidden="true">
-      <i className="viral-mark-orbit viral-mark-orbit-a" />
-      <i className="viral-mark-orbit viral-mark-orbit-b" />
-      <i className="viral-mark-orbit viral-mark-orbit-c" />
-      <i className="viral-mark-core" />
+      <i className="viral-block viral-block-a" />
+      <i className="viral-block viral-block-b" />
+      <i className="viral-block viral-block-c" />
+      <i className="viral-block viral-block-d" />
     </span>
   );
 }

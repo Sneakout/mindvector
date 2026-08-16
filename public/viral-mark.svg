@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100" fill="none">
   <title>Viral mark</title>
-  <desc>Three overlapping orbit signals around a central node.</desc>
-  <g transform="translate(0 0)" stroke="#C8FFB0" stroke-width="2">
-    <ellipse cx="50" cy="50" rx="31" ry="18" transform="rotate(45 50 50)" opacity=".9"/>
-    <ellipse cx="50" cy="50" rx="16" ry="36" transform="rotate(-45 50 50)" opacity=".7"/>
-    <ellipse cx="50" cy="50" rx="36" ry="16" transform="rotate(10 50 50)" opacity=".55"/>
-    <circle cx="50" cy="50" r="5" fill="#C8FFB0" stroke="none"/>
-  </g>
+  <desc>Four geometric blocks representing a social network.</desc>
+  <rect x="8" y="8" width="34" height="34" rx="5" fill="#68C4FF"/>
+  <rect x="58" y="8" width="34" height="34" rx="5" fill="#0C79D8"/>
+  <rect x="8" y="58" width="34" height="34" rx="5" fill="#0C79D8"/>
+  <rect x="58" y="58" width="34" height="34" rx="5" fill="#2E9EFF"/>
 </svg>
