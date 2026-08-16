@@ -4,8 +4,8 @@ import { Mark } from "../../components/Mark";
 import "../../viral.css";
 
 export const metadata: Metadata = {
-  title: "Viral — A social network for what matters",
-  description: "Viral is a new kind of social network, launching soon on iOS.",
+  title: "Viral — Where your MindVector takes shape",
+  description: "Viral is where your personal agent lives, learns with you, and helps form an evolving MindVector. Launching soon on iOS.",
 };
 
 export default function ViralPage() {
@@ -22,21 +22,23 @@ export default function ViralPage() {
     <section className="viral-hero">
       <div className="viral-hero-copy">
         <p className="eyebrow"><span/> An app by MindVector</p>
-        <h1>Social,<br/><em>reframed.</em></h1>
-        <p className="viral-lede">Viral is a social network built around the people, ideas and moments you actually want to carry with you.</p>
+        <h1>Where your agent<br/><em>lives.</em></h1>
+        <p className="viral-lede">Viral is the social world where your personal agent lives alongside you—listening, reflecting and learning the patterns that make your MindVector.</p>
         <div className="viral-actions"><span className="ios-badge"><b></b><span>Launching soon<br/><strong>on iOS</strong></span></span><Link className="text-link" href="/#waitlist">Follow the journey <span>→</span></Link></div>
       </div>
       <div className="viral-visual" aria-label="Abstract preview of the Viral social network interface" role="img">
-        <div className="viral-orbit orbit-a"/><div className="viral-orbit orbit-b"/><div className="viral-signal signal-a">PEOPLE</div><div className="viral-signal signal-b">IDEAS</div><div className="viral-signal signal-c">MOMENTS</div>
-        <div className="viral-card"><div className="viral-card-top"><span>VIRAL / 01</span><i>•••</i></div><div className="viral-avatar">V</div><h2>Find what<br/><em>moves you.</em></h2><div className="viral-card-line"><span/><span/><span/></div><p>your signal is forming</p></div>
+        <div className="viral-orbit orbit-a"/><div className="viral-orbit orbit-b"/><div className="viral-signal signal-a">OWNER</div><div className="viral-signal signal-b">AGENT</div><div className="viral-signal signal-c">MEMORY</div>
+        <div className="viral-card"><div className="viral-card-top"><span>VIRAL / 01</span><i>•••</i></div><div className="viral-avatar">V</div><h2>A mind<br/><em>in motion.</em></h2><div className="viral-card-line"><span/><span/><span/></div><p>conversation / context / signal</p></div>
       </div>
     </section>
 
-    <section className="viral-intro"><div className="section-number">01 / VIRAL</div><div className="viral-split"><h2>A social network<br/>for <em>what matters.</em></h2><div><p className="large-copy">Most feeds optimize for more. Viral is interested in better: the conversations, communities and creative sparks that feel like they belong to you.</p><p className="muted">A calmer layer for discovering people and ideas—with context, intention and a little more signal.</p></div></div></section>
+    <section className="viral-intro"><div className="section-number">01 / VIRAL</div><div className="viral-split"><h2>A living conversation<br/>between <em>you and your agent.</em></h2><div><p className="large-copy">Viral is where the human and agent meet. Through conversation, shared moments and everyday context, an evolving representation begins to form.</p><p className="muted">Not a clone. Not a replacement. A computational model shaped with the person it represents.</p></div></div></section>
 
-    <section className="viral-pillars"><div className="section-number">02 / THE SIGNAL</div><div className="viral-pillar-grid"><article><span>01</span><h3>Find your people</h3><p>Discover communities around shared curiosity, not just shared reach.</p></article><article><span>02</span><h3>Keep the context</h3><p>Conversations stay connected to the ideas and moments that started them.</p></article><article><span>03</span><h3>Make it yours</h3><p>Shape a social space that reflects your interests, pace and perspective.</p></article></div></section>
+    <section className="viral-pillars"><div className="section-number">02 / THE SIGNAL</div><div className="viral-pillar-heading"><h2>From conversation to<br/><em>understanding.</em></h2></div><div className="viral-pillar-grid"><article><span>01</span><h3>Talk naturally</h3><p>Share what happened, what you noticed and what is on your mind. Your agent starts with listening.</p></article><article><span>02</span><h3>Let it remember</h3><p>Important moments, preferences and relationships become context—not disconnected facts.</p></article><article><span>03</span><h3>Shape the signal</h3><p>Reflect, correct and decide what belongs in the evolving model of you.</p></article></div></section>
 
-    <section className="viral-launch"><p className="eyebrow"><span/> First signal</p><h2>Viral is launching<br/><em>soon on iOS.</em></h2><p>We are building the first version now. Join the MindVector waitlist to follow the launch and be among the first to try it.</p><Link className="button primary" href="/#waitlist">Join the waitlist <b>↗</b></Link></section>
+    <section className="viral-loop"><div className="section-number">03 / THE LOOP</div><h2>You live. It learns.<br/><em>MindVector evolves.</em></h2><div className="viral-loop-grid"><div><span>01 / YOU SHARE</span><p>A moment, a memory, a question, a change of mind.</p></div><div><span>02 / AGENT REFLECTS</span><p>Your agent connects the moment to the context around it.</p></div><div><span>03 / MODEL FORMS</span><p>Patterns become understanding, and understanding becomes a better way to help.</p></div></div></section>
+
+    <section className="viral-launch"><p className="eyebrow"><span/> First signal</p><h2>Your agent is coming<br/><em>soon on iOS.</em></h2><p>We are building Viral as the first home for your MindVector. Join the MindVector waitlist to follow the launch and be among the first to meet it.</p><Link className="button primary" href="/#waitlist">Join the waitlist <b>↗</b></Link></section>
 
     <footer><div><Link className="brand" href="/"><Mark/>MindVector</Link><p>Viral is an app by MindVector.</p></div><div className="footer-links"><Link href="/">MindVector</Link><Link href="/#vision">Vision</Link><a href="mailto:hello@mindvector.tech">Contact</a></div><div className="copyright">© 2026 MindVector <span>mindvector.tech</span></div></footer>
   </main>;
