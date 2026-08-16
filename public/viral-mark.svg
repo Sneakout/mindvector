@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100" fill="none">
   <title>Viral mark</title>
   <desc>Four geometric blocks representing a social network.</desc>
-  <rect x="16" y="14" width="29" height="29" rx="6" fill="#68C4FF"/>
-  <rect x="58" y="14" width="24" height="24" rx="5" fill="#0C79D8"/>
-  <rect x="16" y="62" width="24" height="24" rx="5" fill="#0C79D8"/>
-  <rect x="45" y="43" width="29" height="29" rx="6" fill="#68C4FF"/>
+  <defs>
+    <linearGradient id="viral-large-a" x1="16" y1="14" x2="45" y2="43" gradientUnits="userSpaceOnUse"><stop stop-color="#218FF0"/><stop offset="1" stop-color="#269EF5"/></linearGradient>
+    <linearGradient id="viral-small" x1="58" y1="14" x2="82" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#0871D4"/><stop offset="1" stop-color="#1676DC"/></linearGradient>
+    <linearGradient id="viral-large-b" x1="45" y1="43" x2="74" y2="72" gradientUnits="userSpaceOnUse"><stop stop-color="#5CC1F2"/><stop offset="1" stop-color="#55B8ED"/></linearGradient>
+  </defs>
+  <rect x="16" y="14" width="29" height="29" rx="7" fill="url(#viral-large-a)"/>
+  <rect x="58" y="14" width="24" height="24" rx="6" fill="url(#viral-small)"/>
+  <rect x="16" y="62" width="24" height="24" rx="6" fill="url(#viral-small)"/>
+  <rect x="45" y="43" width="29" height="29" rx="7" fill="url(#viral-large-b)"/>
 </svg>
