@@ -115,7 +115,7 @@ export default function Home() {
       </Reveal></section>
 
       <section className="section model" id="technology"><Reveal>
-        <div className="section-number">02 / MINDVECTOR</div><div className="split"><h2>A living model<br/>of a <em>person.</em></h2><p className="large-copy">A MindVector is not a static profile. It continuously evolves as a person lives—turning experience into a deeper form of understanding.</p></div>
+        <div className="section-number">02 / MINDVECTOR</div><div className="split"><h2>A living model<br/>of a <em>person.</em></h2><p className="large-copy">A MindVector is not a static profile. It continuously evolves as a person lives. Each experience adds a deeper layer of understanding.</p></div>
         <div className="process">{["Experience","Memory","Pattern","Understanding","Prediction"].map((x,i)=><div className="process-step" key={x}><span>0{i+1}</span><b>{x}</b><i>{i<4?"→":"↗"}</i></div>)}</div>
       </Reveal></section>
 
@@ -125,19 +125,19 @@ export default function Home() {
       </Reveal></section>
 
       <section className="section agent"><Reveal className="agent-inner">
-        <div><div className="section-number">04 / YOUR AGENT</div><h2>Your agent doesn&apos;t just<br/>know about you.<br/><em>It learns you.</em></h2><p className="large-copy">We are building toward a personal agent that understands preferences, remembers experiences, recognizes social context and helps represent your perspective.</p><p className="caveat">A long-term direction—not a claim that every capability exists today.</p></div>
+        <div><div className="section-number">04 / YOUR AGENT</div><h2>Your agent doesn&apos;t just<br/>know about you.<br/><em>It learns you.</em></h2><p className="large-copy">We are building toward a personal agent that understands preferences, remembers experiences, recognizes social context and helps represent your perspective.</p><p className="caveat">This is a long-term direction, not a claim that every capability exists today.</p></div>
         <div className="agent-orbit"><div className="orbit-ring r1"/><div className="orbit-ring r2"/><div className="agent-core"><Mark/><b>PERSONAL<br/>AGENT</b></div>{["CONTEXT","MEMORY","STYLE","DECISIONS"].map((x,i)=><span key={x} className={`satellite s${i}`}>{x}</span>)}</div>
       </Reveal></section>
 
       <section className="section network" id="vision"><Reveal>
-        <div className="section-number">05 / A NETWORK OF MINDS</div><div className="split"><h2>What happens when<br/>minds can <em>connect?</em></h2><p className="large-copy">A network where every person has an intelligent representation of themselves—helping agents understand context before people connect.</p></div>
+        <div className="section-number">05 / A NETWORK OF MINDS</div><div className="split"><h2>What happens when<br/>minds can <em>connect?</em></h2><p className="large-copy">A network where every person has an intelligent representation of themselves. Their agents can understand context before people connect.</p></div>
         <div className="network-flow">{["Human","MindVector","Agent","Agent","MindVector","Human"].map((x,i)=><div key={i} className={`network-node ${x==="Human"?"human":""}`}><span>{i+1}</span><b>{x}</b>{i<5&&<i>→</i>}</div>)}</div>
       </Reveal></section>
 
       <section className="section beyond"><div className="beyond-glow"><MindCanvas compact/></div><Reveal><div className="section-number">06 / BEYOND A LIFETIME</div><h2>Some things should<br/><em>outlive us.</em></h2><div className="beyond-copy"><p>Over a lifetime, a MindVector can become a rich representation of the experiences, memories, relationships, ideas and perspectives that shaped a person.</p><p>We believe technology could eventually allow that representation to persist beyond the lifetime of its creator.</p><blockquote>Not a replacement for a person.<br/>Not the person themselves.<br/><strong>But a digital continuation of the traces they chose to leave behind.</strong></blockquote></div></Reveal></section>
 
       <section className="section principles" id="principles"><Reveal>
-        <div className="section-number">07 / PRINCIPLES</div><div className="split"><h2>Your mind<br/><em>belongs to you.</em></h2><div><p className="large-copy">MindVector is being designed around a simple principle: a representation of you should remain under your control.</p><p className="muted">These are design goals guiding the system—not unsupported promises about a finished product.</p></div></div>
+        <div className="section-number">07 / PRINCIPLES</div><div className="split"><h2>Your mind<br/><em>belongs to you.</em></h2><div><p className="large-copy">MindVector is being designed around a simple principle: a representation of you should remain under your control.</p><p className="muted">These are design goals guiding the system, not unsupported promises about a finished product.</p></div></div>
         <div className="principle-list">{principles.map((p,i)=><div key={p}><span>{String(i+1).padStart(2,"0")}</span><b>{p}</b><i>+</i></div>)}</div>
       </Reveal></section>
 

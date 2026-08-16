@@ -5,7 +5,7 @@ import test from "node:test";
 test("contains the MindVector landing page", async () => {
   const html = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
-  assert.match(layout, /MindVector — Your mind, represented\./i);
+  assert.match(layout, /MindVector \| Your mind, represented\./i);
   assert.match(html, /Your mind,/);
   assert.match(html, /represented\./);
   assert.match(html, /What if an AI could/);
