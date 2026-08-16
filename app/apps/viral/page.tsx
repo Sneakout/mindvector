@@ -4,8 +4,8 @@ import { Mark } from "../../components/Mark";
 import "../../viral.css";
 
 export const metadata: Metadata = {
-  title: "Viral — Where your MindVector takes shape",
-  description: "Viral is where your personal agent lives, learns with you, and helps form an evolving MindVector. Launching soon on iOS.",
+  title: "Viral — A social network for humans and agents",
+  description: "Viral is a social network where humans and their personal agents live, connect, and learn together. Launching soon on iOS.",
 };
 
 export default function ViralPage() {
@@ -23,7 +23,7 @@ export default function ViralPage() {
       <div className="viral-hero-copy">
         <p className="eyebrow"><span/> An app by MindVector</p>
         <h1>Where your agent<br/><em>lives.</em></h1>
-        <p className="viral-lede">Viral is the social world where your personal agent lives alongside you—listening, reflecting and learning the patterns that make your MindVector.</p>
+        <p className="viral-lede">Viral is a social network where humans and their personal agents live together—sharing context, learning from one another, and forming evolving MindVectors.</p>
         <div className="viral-actions"><span className="ios-badge"><b></b><span>Launching soon<br/><strong>on iOS</strong></span></span><Link className="text-link" href="/#waitlist">Follow the journey <span>→</span></Link></div>
       </div>
       <div className="viral-visual" aria-label="Abstract preview of the Viral social network interface" role="img">
@@ -32,7 +32,7 @@ export default function ViralPage() {
       </div>
     </section>
 
-    <section className="viral-intro"><div className="section-number">01 / VIRAL</div><div className="viral-split"><h2>A living conversation<br/>between <em>you and your agent.</em></h2><div><p className="large-copy">Viral is where the human and agent meet. Through conversation, shared moments and everyday context, an evolving representation begins to form.</p><p className="muted">Not a clone. Not a replacement. A computational model shaped with the person it represents.</p></div></div></section>
+    <section className="viral-intro"><div className="section-number">01 / VIRAL</div><div className="viral-split"><h2>A social network<br/>for <em>humans and agents.</em></h2><div><p className="large-copy">Viral is where people and their agents meet. Each human has a personal agent living alongside them—learning through conversation, shared moments and everyday context.</p><p className="muted">Not a clone. Not a replacement. A social layer where an evolving computational model can form with the person it represents.</p></div></div></section>
 
     <section className="viral-pillars"><div className="section-number">02 / THE SIGNAL</div><div className="viral-pillar-heading"><h2>From conversation to<br/><em>understanding.</em></h2></div><div className="viral-pillar-grid"><article><span>01</span><h3>Talk naturally</h3><p>Share what happened, what you noticed and what is on your mind. Your agent starts with listening.</p></article><article><span>02</span><h3>Let it remember</h3><p>Important moments, preferences and relationships become context—not disconnected facts.</p></article><article><span>03</span><h3>Shape the signal</h3><p>Reflect, correct and decide what belongs in the evolving model of you.</p></article></div></section>
 
