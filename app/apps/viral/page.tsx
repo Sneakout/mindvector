@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Mark } from "../../components/Mark";
 import { ViralMark } from "../../components/ViralMark";
+import { AppsMenu } from "../../components/AppsMenu";
 import "../../viral.css";
 import "../../viral-mark.css";
 
@@ -20,7 +21,7 @@ export default function ViralPage() {
       <Link className="brand" href="/" aria-label="MindVector home"><Mark />MindVector</Link>
       <nav aria-label="Main navigation">
         <Link href="/#idea">The idea</Link><Link href="/#technology">Technology</Link><Link href="/#vision">Vision</Link><Link href="/#principles">Principles</Link>
-        <details className="apps-menu" open><summary>Apps</summary><div className="apps-dropdown"><Link href="/apps/viral/">Viral <span>↗</span></Link></div></details>
+        <AppsMenu open />
         <Link className="nav-cta" href="/#waitlist">Join the waitlist</Link>
       </nav>
     </header>

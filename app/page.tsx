@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Mark } from "./components/Mark";
+import { AppsMenu } from "./components/AppsMenu";
 
 const facets = [
   ["Memory", "What happened to you."],
@@ -92,7 +93,7 @@ export default function Home() {
       <a className="brand" href="#top" aria-label="MindVector home"><Mark />MindVector</a>
       <button className="menu" aria-label="Toggle navigation" aria-expanded={menu} onClick={() => setMenu(!menu)}><span/><span/></button>
       <nav className={menu ? "open" : ""} aria-label="Main navigation">
-        <a href="#idea" onClick={() => setMenu(false)}>The idea</a><a href="#technology" onClick={() => setMenu(false)}>Technology</a><a href="#vision" onClick={() => setMenu(false)}>Vision</a><a href="#principles" onClick={() => setMenu(false)}>Principles</a><details className="apps-menu"><summary>Apps</summary><div className="apps-dropdown"><a href="/apps/viral/" onClick={() => setMenu(false)}>Viral <span>↗</span></a></div></details><a className="nav-cta" href="#waitlist" onClick={() => setMenu(false)}>Join the waitlist</a>
+        <a href="#idea" onClick={() => setMenu(false)}>The idea</a><a href="#technology" onClick={() => setMenu(false)}>Technology</a><a href="#vision" onClick={() => setMenu(false)}>Vision</a><a href="#principles" onClick={() => setMenu(false)}>Principles</a><AppsMenu /><a className="nav-cta" href="#waitlist" onClick={() => setMenu(false)}>Join the waitlist</a>
       </nav>
     </header>
 
