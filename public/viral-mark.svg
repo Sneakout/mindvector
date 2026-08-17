@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">Viral logo</title>
+  <desc id="desc">Four connected rounded boxes in Viral's cyan and teal brand palette.</desc>
+  <defs>
+    <linearGradient id="primary" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#21DBEB"/><stop offset="1" stop-color="#14C2D1"/></linearGradient>
+    <linearGradient id="supporting" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A7A8F"/><stop offset="1" stop-color="#05576B"/></linearGradient>
+    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A7A8F"/><stop offset="1" stop-color="#05576B"/></linearGradient>
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#54E7EE"/><stop offset="1" stop-color="#21DBEB"/></linearGradient>
+  </defs>
+  <path d="M349 198H561C623 198 673 248 673 310V617C673 624 668 629 661 629H349C287 629 237 579 237 517V310C237 248 287 198 349 198Z" fill="url(#primary)"/>
+  <rect x="725" y="240" width="277" height="307" rx="77" fill="url(#supporting)"/>
+  <rect x="272" y="683" width="302" height="302" rx="78" fill="url(#deep)"/>
+  <path d="M676 625H919C973 625 1017 669 1017 723V914C1017 968 973 1012 919 1012H762C708 1012 664 968 664 914V637C664 630 669 625 676 625Z" fill="url(#highlight)"/>
+</svg>
