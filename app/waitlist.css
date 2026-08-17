@@ -1,0 +1,2 @@
+.form-error { color: #ff9c9c; font-size: 12px; margin: 12px 0 0; }
+.waitlist button:disabled { opacity: .55; cursor: wait; }

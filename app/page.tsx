@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Mark } from "./components/Mark";
 import { AppsMenu } from "./components/AppsMenu";
+import "./waitlist.css";
 
 const facets = [
   ["Memory", "What happened to you."],
@@ -86,7 +87,19 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 export default function Home() {
   const [menu, setMenu] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const submit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); setSubmitting(true); setFormError("");
+    const email = new FormData(e.currentTarget).get("email");
+    try {
+      const response = await fetch("/api/waitlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Could not join the waitlist.");
+      setSubmitted(true);
+    } catch (error) { setFormError(error instanceof Error ? error.message : "Could not join the waitlist."); }
+    finally { setSubmitting(false); }
+  };
   return <main>
     <a className="skip" href="#content">Skip to content</a>
     <header className="nav">
@@ -146,7 +159,7 @@ export default function Home() {
 
       <section className="section hood"><Reveal><div className="section-number">09 / UNDER THE HOOD</div><div className="hood-layout"><div><h2>Philosophy,<br/>with <em>structure.</em></h2><p>An abstract view of the layers behind a MindVector. The architecture will evolve; the distinction between source, representation and action remains essential.</p></div><div className="stack">{["Memory","Semantic representation","Relationship graph","Context","Personality","MindVector","Personal agent"].map((x,i)=><div key={x} className={i>4?"active":""}><span>{String(i+1).padStart(2,"0")}</span><b>{x}</b><i>↓</i></div>)}</div></div></Reveal></section>
 
-      <section className="waitlist" id="waitlist"><Reveal><Mark/><p className="eyebrow">THE QUESTION</p><h2>What would your mind<br/>look like as a model?</h2><form onSubmit={submit}>{submitted?<p className="success" role="status">You&apos;re on the early list. We&apos;ll keep you close to the journey.</p>:<><label className="sr-only" htmlFor="email">Email address</label><input id="email" type="email" required placeholder="you@example.com" autoComplete="email"/><button type="submit">Join the waitlist <span>→</span></button></>}</form><a className="text-link" href="mailto:hello@mindvector.tech">Follow the journey ↗</a></Reveal></section>
+      <section className="waitlist" id="waitlist"><Reveal><Mark/><p className="eyebrow">THE QUESTION</p><h2>What would your mind<br/>look like as a model?</h2><form onSubmit={submit}>{submitted?<p className="success" role="status">You&apos;re on the early list. We&apos;ll keep you close to the journey.</p>:<><label className="sr-only" htmlFor="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com" autoComplete="email" disabled={submitting}/><button type="submit" disabled={submitting}>{submitting ? "Joining…" : "Join the waitlist"} <span>→</span></button>{formError && <p className="form-error" role="alert">{formError}</p>}</>}</form><a className="text-link" href="mailto:hello@mindvector.tech">Follow the journey ↗</a></Reveal></section>
     </div>
 
     <footer><div><a className="brand" href="#top"><Mark/>MindVector</a><p>Your mind, represented.</p></div><div className="footer-links"><a href="#idea">About</a><a href="#technology">Technology</a><a href="#vision">Vision</a><a href="#principles">Privacy</a><a href="mailto:hello@mindvector.tech">Contact</a></div><div className="copyright">© 2026 MindVector <span>mindvector.tech</span></div></footer>
