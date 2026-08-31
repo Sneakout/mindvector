@@ -1,167 +1,72 @@
-"use client";
-
-import { FormEvent, useEffect, useRef, useState } from "react";
 import { Mark } from "./components/Mark";
-import { AppsMenu } from "./components/AppsMenu";
-import "./waitlist.css";
 
-const facets = [
-  ["Memory", "What happened to you."],
-  ["Personality", "How you tend to think and behave."],
-  ["Preferences", "What you like and dislike."],
-  ["Relationships", "The people and communities that matter to you."],
-  ["Context", "The circumstances surrounding your decisions."],
-  ["Creativity", "How you express yourself."],
-  ["Values", "What matters to you."],
-  ["Evolution", "How all of this changes over time."],
+const services = [
+  { number: "01", title: "Mobile products", text: "Native iOS and Android apps that feel considered from the first tap to the thousandth.", tags: ["iOS", "Android", "React Native"], className: "mobile" },
+  { number: "02", title: "Web platforms", text: "Fast, expressive websites and web applications built to turn attention into action.", tags: ["Websites", "SaaS", "Commerce"], className: "web" },
+  { number: "03", title: "Business systems", text: "CRM, billing and internal tools that bring the moving parts of your business into focus.", tags: ["CRM", "Billing", "Operations"], className: "systems" },
+  { number: "04", title: "Applied AI", text: "Useful AI and machine-learning capabilities, designed around real workflows—not demos.", tags: ["AI agents", "Automation", "ML"], className: "ai" },
 ];
 
-const principles = ["Ownership", "Consent", "Privacy", "Transparency", "Portability", "Memory control", "Agent permissions", "Right to delete", "Legacy consent"];
-
-function MindCanvas({ compact = false }: { compact?: boolean }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    let frame = 0, animation = 0, mx = 0, my = 0;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const count = compact ? 30 : 66;
-    const nodes = Array.from({ length: count }, (_, i) => ({
-      a: i * 2.399 + (i % 7) * .08,
-      r: 28 + ((i * 47) % 210),
-      z: .35 + ((i * 19) % 65) / 100,
-      s: .00015 + (i % 5) * .000035,
-    }));
-    const resize = () => {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(devicePixelRatio, 2);
-      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    const move = (e: PointerEvent) => {
-      const r = canvas.getBoundingClientRect();
-      mx = (e.clientX - r.left - r.width / 2) * .045;
-      my = (e.clientY - r.top - r.height / 2) * .045;
-    };
-    const draw = () => {
-      const w = canvas.clientWidth, h = canvas.clientHeight, t = reduce ? 0 : frame++;
-      ctx.clearRect(0, 0, w, h);
-      const cx = w / 2 + mx, cy = h / 2 + my;
-      const pts = nodes.map((n, i) => {
-        const a = n.a + t * n.s;
-        const pulse = reduce ? 1 : 1 + Math.sin(t * .008 + i) * .035;
-        return { x: cx + Math.cos(a) * n.r * n.z * pulse, y: cy + Math.sin(a) * n.r * .62 * pulse, z: n.z };
-      });
-      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-        const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
-        if (d < 78) { ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.strokeStyle = `rgba(147,177,255,${(1-d/78)*.16})`; ctx.lineWidth = .6; ctx.stroke(); }
-      }
-      pts.forEach((p, i) => {
-        const glow = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,7);
-        glow.addColorStop(0, i % 9 === 0 ? "rgba(197,255,216,.95)" : "rgba(205,218,255,.8)");
-        glow.addColorStop(1,"rgba(120,150,255,0)");
-        ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(p.x,p.y,7,0,Math.PI*2); ctx.fill();
-        ctx.fillStyle="#e9efff"; ctx.beginPath(); ctx.arc(p.x,p.y, p.z * 1.25,0,Math.PI*2); ctx.fill();
-      });
-      if (!reduce) animation = requestAnimationFrame(draw);
-    };
-    resize(); draw();
-    window.addEventListener("resize", resize); canvas.addEventListener("pointermove", move);
-    return () => { cancelAnimationFrame(animation); window.removeEventListener("resize", resize); canvas.removeEventListener("pointermove", move); };
-  }, [compact]);
-  return <canvas ref={canvasRef} className="mind-canvas" aria-label="An abstract, evolving constellation representing a MindVector" role="img" />;
-}
-
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const io = new IntersectionObserver(([entry]) => entry.isIntersecting && el.classList.add("visible"), { threshold: .12 });
-    io.observe(el); return () => io.disconnect();
-  }, []);
-  return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
-}
+const process = [
+  ["01", "Frame", "We find the real problem, the commercial opportunity and the clearest path through."],
+  ["02", "Shape", "We turn the direction into an opinionated product, brand and technical plan."],
+  ["03", "Build", "A focused senior team designs, engineers and tests the product as one system."],
+  ["04", "Evolve", "We launch, learn from real use and make the next decisions with intent."],
+];
 
 export default function Home() {
-  const [menu, setMenu] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [formError, setFormError] = useState("");
-  const submit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); setSubmitting(true); setFormError("");
-    const email = new FormData(e.currentTarget).get("email");
-    try {
-      const response = await fetch("/api/waitlist", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || "Could not join the waitlist.");
-      setSubmitted(true);
-    } catch (error) { setFormError(error instanceof Error ? error.message : "Could not join the waitlist."); }
-    finally { setSubmitting(false); }
-  };
-  return <main>
-    <a className="skip" href="#content">Skip to content</a>
-    <header className="nav">
-      <a className="brand" href="#top" aria-label="MindVector home"><Mark />MindVector</a>
-      <button className="menu" aria-label="Toggle navigation" aria-expanded={menu} onClick={() => setMenu(!menu)}><span/><span/></button>
-      <nav className={menu ? "open" : ""} aria-label="Main navigation">
-        <a href="#idea" onClick={() => setMenu(false)}>The idea</a><a href="#technology" onClick={() => setMenu(false)}>Technology</a><a href="#vision" onClick={() => setMenu(false)}>Vision</a><a href="#principles" onClick={() => setMenu(false)}>Principles</a><AppsMenu /><a className="nav-cta" href="#waitlist" onClick={() => setMenu(false)}>Join the waitlist</a>
-      </nav>
-    </header>
+  return (
+    <main id="top">
+      <a className="skip" href="#content">Skip to content</a>
+      <header className="nav">
+        <a className="brand" href="#top" aria-label="MindVector home"><Mark />MindVector</a>
+        <nav aria-label="Main navigation"><a href="#services">Capabilities</a><a href="#approach">Approach</a><a href="#contact">Contact</a></nav>
+        <a className="nav-cta" href="#contact">Start a project <span>↗</span></a>
+      </header>
 
-    <section className="hero" id="top">
-      <div className="hero-copy">
-        <p className="eyebrow"><span/> A computational representation of a person</p>
-        <h1>Your mind,<br/><em>represented.</em></h1>
-        <p className="lede">MindVector is building technology that learns the patterns, memories, relationships and perspectives that make you who you are.</p>
-        <div className="actions"><a className="button primary" href="#technology">Explore MindVector <b>↘</b></a><a className="text-link" href="#idea">The idea <span>→</span></a></div>
-      </div>
-      <div className="hero-visual"><MindCanvas/><span className="coordinate top">MV / 00—∞</span><span className="coordinate bottom">EVOLVING MODEL<br/>STATE: FORMING</span></div>
-      <div className="scroll">SCROLL TO EXPLORE <span>↓</span></div>
-    </section>
+      <section className="hero" id="content">
+        <div className="hero-copy">
+          <p className="eyebrow"><span /> Independent digital product studio</p>
+          <h1>Ideas worth<br /><em>building well.</em></h1>
+          <p className="hero-lede">MindVector partners with ambitious teams to design and build digital products people choose to use.</p>
+          <div className="hero-actions"><a className="button button-primary" href="#contact">Tell us what you&apos;re building <b>→</b></a><a className="text-link" href="#services">Explore capabilities <span>↓</span></a></div>
+        </div>
+        <div className="hero-system" aria-label="A visual representation of product systems connecting into one release" role="img">
+          <div className="system-label label-a">PRODUCT / 01</div><div className="system-label label-b">SHIPPED WITH INTENT</div>
+          <div className="system-grid">
+            <div className="system-card card-product"><span>01</span><b>PRODUCT</b><i /></div><div className="system-card card-design"><span>02</span><b>DESIGN</b><i /></div><div className="system-card card-engineering"><span>03</span><b>ENGINEERING</b><i /></div><div className="system-card card-intelligence"><span>04</span><b>INTELLIGENCE</b><i /></div><div className="system-core"><Mark /><strong>ONE<br />SYSTEM</strong></div>
+          </div>
+        </div>
+        <div className="hero-foot"><span>BUILT FOR THE NEXT VERSION OF YOUR BUSINESS</span><a href="#approach">SCROLL TO EXPLORE <b>↓</b></a></div>
+      </section>
 
-    <div id="content">
-      <section className="section idea" id="idea"><Reveal>
-        <div className="section-number">01 / THE IDEA</div>
-        <div className="split"><h2>What if an AI could<br/>truly <em>understand you?</em></h2><div><p className="large-copy">Conventional AI knows information. MindVector is interested in something deeper: the structure beneath your choices.</p><p className="muted">What you remember. What you value. Who matters to you. How your opinions evolve. How relationships influence you. How you see the world.</p></div></div>
-        <div className="forming" aria-label="Disconnected signals becoming a coherent model"><div className="signal-label">DISCONNECTED SIGNALS</div>{Array.from({length: 24},(_,i)=><i key={i} style={{"--i":i} as React.CSSProperties}/>)}<div className="forming-core"><Mark/><span>COHERENT<br/>MODEL</span></div></div>
-      </Reveal></section>
+      <section className="intro section">
+        <p className="section-kicker">01 / THE STUDIO</p>
+        <div className="intro-layout"><h2>Business-minded.<br /><em>Product-obsessed.</em></h2><div><p className="big-copy">We combine strategy, product design and engineering to turn ambitious ideas into software that is useful, distinct and built to last.</p><p className="muted">From a first prototype to a platform that needs to scale, we bring the senior attention a meaningful product deserves.</p></div></div>
+        <div className="signal-row" aria-label="MindVector capabilities"><span>PRODUCT STRATEGY</span><i /><span>DESIGN</span><i /><span>ENGINEERING</span><i /><span>INTELLIGENCE</span></div>
+      </section>
 
-      <section className="section model" id="technology"><Reveal>
-        <div className="section-number">02 / MINDVECTOR</div><div className="split"><h2>A living model<br/>of a <em>person.</em></h2><p className="large-copy">A MindVector is not a static profile. It continuously evolves as a person lives. Each experience adds a deeper layer of understanding.</p></div>
-        <div className="process">{["Experience","Memory","Pattern","Understanding","Prediction"].map((x,i)=><div className="process-step" key={x}><span>0{i+1}</span><b>{x}</b><i>{i<4?"→":"↗"}</i></div>)}</div>
-      </Reveal></section>
+      <section className="services section" id="services">
+        <div className="section-heading"><p className="section-kicker">02 / CAPABILITIES</p><p>One partner across the work that turns an idea into a living product.</p></div>
+        <div className="service-grid">{services.map((service) => <article className={`service-card ${service.className}`} key={service.number}><div className="service-top"><span>{service.number}</span><i>↗</i></div><div className="service-art" aria-hidden="true"><b /><b /><b /></div><div className="service-content"><h3>{service.title}</h3><p>{service.text}</p><ul>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div></article>)}</div>
+      </section>
 
-      <section className="section anatomy"><Reveal>
-        <div className="section-number">03 / ANATOMY</div><div className="center-title"><h2>What makes a<br/><em>MindVector?</em></h2><p>Not a single dataset. A living relationship between the many dimensions of a person.</p></div>
-        <div className="facet-grid">{facets.map(([name,desc],i)=><button type="button" className="facet" key={name}><span>0{i+1}</span><div className="facet-dot"/><h3>{name}</h3><p>{desc}</p></button>)}</div>
-      </Reveal></section>
+      <section className="statement section">
+        <p className="section-kicker">03 / WHAT WE BELIEVE</p>
+        <p className="statement-copy">Technology should make a business <em>clearer, quicker and more human.</em> The best products create their own momentum.</p>
+        <div className="statement-note"><span>OUR STANDARD</span><p>Thoughtful in the details.<br />Direct in the decisions.<br /><b>Useful in the real world.</b></p></div>
+      </section>
 
-      <section className="section agent"><Reveal className="agent-inner">
-        <div><div className="section-number">04 / YOUR AGENT</div><h2>Your agent doesn&apos;t just<br/>know about you.<br/><em>It learns you.</em></h2><p className="large-copy">We are building toward a personal agent that understands preferences, remembers experiences, recognizes social context and helps represent your perspective.</p><p className="caveat">This is a long-term direction, not a claim that every capability exists today.</p></div>
-        <div className="agent-orbit"><div className="orbit-ring r1"/><div className="orbit-ring r2"/><div className="agent-core"><Mark/><b>PERSONAL<br/>AGENT</b></div>{["CONTEXT","MEMORY","STYLE","DECISIONS"].map((x,i)=><span key={x} className={`satellite s${i}`}>{x}</span>)}</div>
-      </Reveal></section>
+      <section className="approach section" id="approach">
+        <div className="section-heading"><p className="section-kicker">04 / HOW WE WORK</p><h2>Less theatre.<br /><em>More progress.</em></h2></div>
+        <div className="process-list">{process.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p><i>→</i></article>)}</div>
+      </section>
 
-      <section className="section network" id="vision"><Reveal>
-        <div className="section-number">05 / A NETWORK OF MINDS</div><div className="split"><h2>What happens when<br/>minds can <em>connect?</em></h2><p className="large-copy">A network where every person has an intelligent representation of themselves. Their agents can understand context before people connect.</p></div>
-        <div className="network-flow">{["Human","MindVector","Agent","Agent","MindVector","Human"].map((x,i)=><div key={i} className={`network-node ${x==="Human"?"human":""}`}><span>{i+1}</span><b>{x}</b>{i<5&&<i>→</i>}</div>)}</div>
-      </Reveal></section>
+      <section className="outcomes section"><div className="outcome-rail"><span>WHAT WE HELP CREATE</span><span>WHAT WE HELP CREATE</span></div><div className="outcomes-grid"><h2>Software with a<br /><em>reason to exist.</em></h2><div className="outcome-list"><p>New ventures with a clear first release.</p><p>Established products ready for their next chapter.</p><p>Operations that need to stop living in spreadsheets.</p><p>AI opportunities grounded in an actual business need.</p></div></div></section>
 
-      <section className="section beyond"><div className="beyond-glow"><MindCanvas compact/></div><Reveal><div className="section-number">06 / BEYOND A LIFETIME</div><h2>Some things should<br/><em>outlive us.</em></h2><div className="beyond-copy"><p className="beyond-lead">Over a lifetime, a MindVector can become a rich representation of the experiences, memories, relationships, ideas and perspectives that shaped a person.</p><p>We believe technology could eventually allow that representation to persist beyond the lifetime of its creator.</p><blockquote>Not a replacement for a person.<br/>Not the person themselves.<br/><strong>But a digital continuation of the traces they chose to leave behind.</strong></blockquote></div></Reveal></section>
+      <section className="contact" id="contact"><p className="eyebrow"><span /> Let&apos;s make something useful</p><h2>Have a product<br /><em>in mind?</em></h2><p>Tell us where you are and where you want to get to. We&apos;ll start with a candid conversation.</p><a className="contact-link" href="mailto:hello@mindvector.tech?subject=Project%20enquiry">hello@mindvector.tech <span>↗</span></a></section>
 
-      <section className="section principles" id="principles"><Reveal>
-        <div className="section-number">07 / PRINCIPLES</div><div className="split"><h2>Your mind<br/><em>belongs to you.</em></h2><div><p className="large-copy">MindVector is being designed around a simple principle: a representation of you should remain under your control.</p><p className="muted">These are design goals guiding the system, not unsupported promises about a finished product.</p></div></div>
-        <div className="principle-list">{principles.map((p,i)=><div key={p}><span>{String(i+1).padStart(2,"0")}</span><b>{p}</b><i>+</i></div>)}</div>
-      </Reveal></section>
-
-      <section className="section future"><Reveal><div className="section-number">08 / THE FUTURE</div><h2>Infrastructure for<br/><em>digital identity.</em></h2><div className="future-line">{[["Today","AI understands language."],["Next","AI understands context."],["Then","AI understands individuals."],["Eventually","AI can represent individuals."],["The future","Networks of intelligent personal agents."]].map(([a,b],i)=><div key={a}><span>0{i+1}</span><i/><h3>{a}</h3><p>{b}</p></div>)}</div></Reveal></section>
-
-      <section className="section hood"><Reveal><div className="section-number">09 / UNDER THE HOOD</div><div className="hood-layout"><div><h2>Philosophy,<br/>with <em>structure.</em></h2><p>An abstract view of the layers behind a MindVector. The architecture will evolve; the distinction between source, representation and action remains essential.</p></div><div className="stack">{["Memory","Semantic representation","Relationship graph","Context","Personality","MindVector","Personal agent"].map((x,i)=><div key={x} className={i>4?"active":""}><span>{String(i+1).padStart(2,"0")}</span><b>{x}</b><i>↓</i></div>)}</div></div></Reveal></section>
-
-      <section className="waitlist" id="waitlist"><Reveal><Mark/><p className="eyebrow">THE QUESTION</p><h2>What would your mind<br/>look like as a model?</h2><form onSubmit={submit}>{submitted?<p className="success" role="status">You&apos;re on the early list. We&apos;ll keep you close to the journey.</p>:<><label className="sr-only" htmlFor="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com" autoComplete="email" disabled={submitting}/><button type="submit" disabled={submitting}>{submitting ? "Joining…" : "Join the waitlist"} <span>→</span></button>{formError && <p className="form-error" role="alert">{formError}</p>}</>}</form><a className="text-link" href="mailto:hello@mindvector.tech">Follow the journey ↗</a></Reveal></section>
-    </div>
-
-    <footer><div><a className="brand" href="#top"><Mark/>MindVector</a><p>Your mind, represented.</p></div><div className="footer-links"><a href="#idea">About</a><a href="#technology">Technology</a><a href="#vision">Vision</a><a href="#principles">Privacy</a><a href="mailto:hello@mindvector.tech">Contact</a></div><div className="copyright">© 2026 MindVector <span>mindvector.tech</span></div></footer>
-  </main>;
+      <footer><a className="brand" href="#top"><Mark />MindVector</a><div className="footer-links"><a href="#services">Capabilities</a><a href="#approach">Approach</a><a href="mailto:hello@mindvector.tech">Contact</a></div><p>© 2026 MindVector</p></footer>
+    </main>
+  );
 }
