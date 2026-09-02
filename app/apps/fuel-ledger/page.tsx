@@ -2,7 +2,22 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "FuelLedger | Petrol pump management, under control.",
-  description: "FuelLedger brings sales, collections, stock, shifts and accounting together for petrol pump operators.",
+  description: "FuelLedger is the complete operating system for petrol pumps—staff, shifts, MS, HSD, lubes, AdBlue, inventory, sales, collections, accounting and daily AI insights in one place.",
+  alternates: { canonical: "https://mindvector.tech/apps/fuel-ledger" },
+  keywords: ["FuelLedger", "petrol pump management", "fuel station management system", "petrol pump software", "fuel inventory", "pump reconciliation", "petrol pump AI"],
+  openGraph: {
+    title: "FuelLedger | The operating system for petrol pumps",
+    description: "Run staff, shifts, fuel and non-fuel inventory, sales, collections, accounting and daily AI-led owner insights from one system.",
+    url: "https://mindvector.tech/apps/fuel-ledger",
+    siteName: "FuelLedger",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "FuelLedger | The operating system for petrol pumps",
+    description: "Complete petrol pump operations, daily control and AI-led owner insights in one place.",
+  },
 };
 
 const features = [
