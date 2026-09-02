@@ -1,5 +1,23 @@
-import { Mark } from "../../components/Mark";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FuelLedger | Petrol pump management, under control.",
+  description: "FuelLedger brings sales, collections, stock, shifts and accounting together for petrol pump operators.",
+};
+
+const features = [
+  "Shift, nozzle and attendant management", "Sales and collection reconciliation", "Tank stock, dips and density", "Customers, credit and fleet", "Purchases, expenses and salaries", "Double-entry accounting and reports", "Owner dashboard and multi-pump view", "Daily backups, exports and audit history",
+];
 
 export default function FuelLedgerPage() {
-  return <main className="app-placeholder"><a className="brand" href="/"><Mark />MindVector</a><p>APP / 02</p><h1>Fuel Ledger</h1><span>Details coming soon.</span></main>;
+  return <main className="fuel-page">
+    <header className="fuel-nav"><a href="/" className="fuel-brand" aria-label="MindVector home"><span className="fuel-mark">FL</span>FuelLedger</a><nav aria-label="FuelLedger navigation"><a href="#product">Product</a><a href="#pricing">Pricing</a></nav><a className="fuel-nav-cta" href="tel:+918977506454">Talk to us <span>↗</span></a></header>
+    <section className="fuel-hero" id="product">
+      <div className="fuel-hero-copy"><p className="fuel-eyebrow"><span /> Petrol pump operations, in one place</p><h1>Every shift.<br /><em>Under control.</em></h1><p>FuelLedger gives owners a clear, live view of sales, collections, stock and the few things that need attention—without chasing spreadsheets.</p><div className="fuel-actions"><a className="fuel-primary" href="tel:+918977506454">Speak with us <b>→</b></a><a className="fuel-link" href="#pricing">See pricing <span>↓</span></a></div></div>
+      <div className="fuel-dashboard" aria-label="FuelLedger dashboard preview" role="img"><div className="dashboard-top"><span>STATION C</span><i>● LIVE</i></div><div className="dashboard-title"><p>Tuesday, 1 September</p><b>Station C, under control</b><span>Today&apos;s performance, outlet health, and what needs attention.</span></div><div className="fuel-metrics"><div><small>SALES TODAY</small><strong>₹3,40,948</strong><span>10 transactions</span></div><div><small>COLLECTED TODAY</small><strong>₹2,93,295</strong><span>Cash, UPI, card & other</span></div><div><small>NET PROFIT TODAY</small><strong>₹29,826</strong><span>Sales less product cost</span></div></div><div className="dashboard-lower"><section><small>7-DAY PERFORMANCE</small><h2>₹22,60,916 <span>in sales</span></h2><div className="bar-chart" aria-hidden="true">{[59,68,63,77,71,82,74].map((height, index) => <i key={index} style={{ "--height": `${height}%` } as React.CSSProperties} />)}</div></section><aside><small>ATTENTION</small><h3>What needs action</h3><p><b>3 shifts</b> waiting for reconciliation <span>→</span></p><p><b>1 stock position</b> at zero or below <span>→</span></p></aside></div></div>
+    </section>
+    <section className="fuel-value"><p>ONE SYSTEM FOR THE WHOLE OUTLET</p><div><strong>01</strong><span>Know what happened today.</span><strong>02</strong><span>See what needs attention.</span><strong>03</strong><span>Close every shift with confidence.</span></div></section>
+    <section className="fuel-pricing" id="pricing"><div className="pricing-heading"><p className="fuel-eyebrow"><span /> Recommended plan</p><h2>FuelLedger<br /><em>Complete</em></h2><p>Everything an owner needs to run a petrol pump with clarity and control.</p></div><article className="pricing-card"><div className="pricing-card-head"><div><span className="fuel-mark">FL</span><p>FUELLEDGER COMPLETE</p></div><a href="tel:+918977506454">Launch pricing <b>↗</b></a></div><div className="price-options"><div><p>Pay monthly</p><strong>₹1,499</strong><span>per petrol pump / month</span></div><div className="annual"><p>Pay annually <b>About 2 months free</b></p><strong>₹14,999</strong><span>per petrol pump / year</span></div></div><div className="early-adopter"><span>✦</span><div><b>EARLY-ADOPTER FIRST YEAR</b><p>Includes assisted setup. Renewal moves to the standard annual price.</p></div><strong>₹11,999 <small>per petrol pump</small></strong></div><ul className="feature-list">{features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul><a className="pricing-contact" href="tel:+918977506454">Contact us · 89775 06454 <span>↗</span></a><p className="price-note">Prices exclude applicable GST. No transaction fee is charged by FuelLedger.</p></article></section>
+    <section className="fuel-cta"><p className="fuel-eyebrow"><span /> Built for the daily reality of a pump</p><h2>Ready to run a<br /><em>tighter outlet?</em></h2><a href="tel:+918977506454">Call 89775 06454 <span>→</span></a></section><footer className="fuel-footer"><a href="/" className="fuel-brand"><span className="fuel-mark">FL</span>FuelLedger</a><p>© 2026 FuelLedger</p><a href="/">A MindVector product ↗</a></footer>
+  </main>;
 }
