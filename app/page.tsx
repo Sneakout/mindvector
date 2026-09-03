@@ -1,5 +1,6 @@
 import { Mark } from "./components/Mark";
 import { AppsMenu } from "./components/AppsMenu";
+import { MobileMenu } from "./components/MobileMenu";
 
 const services = [
   { number: "01", title: "Mobile products", text: "Native iOS and Android apps that feel considered from the first tap to the thousandth.", tags: ["iOS", "Android", "React Native"], className: "mobile" },
@@ -22,6 +23,7 @@ export default function Home() {
       <header className="nav">
         <a className="brand" href="#top" aria-label="MindVector home"><Mark />MindVector</a>
         <nav aria-label="Main navigation"><a href="#services">Capabilities</a><a href="#approach">Approach</a><AppsMenu /><a href="#contact">Contact</a></nav>
+        <MobileMenu />
         <a className="nav-cta" href="#contact">Start a project <span>↗</span></a>
       </header>
 
