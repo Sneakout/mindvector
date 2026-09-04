@@ -6,19 +6,19 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MindVector | Digital products built with intent.",
-  description: "MindVector is an independent digital product studio. We design and build mobile apps, web platforms, business systems, and applied AI.",
+  title: "MindVector | Digital Products, Apps, Software & AI",
+  description: "MindVector builds its own software products and partners with ambitious teams to create mobile apps, web platforms, business systems, and applied AI.",
   metadataBase: new URL("https://mindvector.tech"),
   applicationName: "MindVector",
-  keywords: ["MindVector", "digital product studio", "iOS development", "Android development", "web development", "CRM", "billing systems", "AI development"],
+  keywords: ["MindVector", "digital product company", "product development studio", "iOS app development", "Android app development", "web application development", "business software", "CRM development", "billing systems", "AI development", "machine learning"],
   authors: [{ name: "MindVector" }],
   creator: "MindVector",
   publisher: "MindVector",
   category: "business",
   alternates: { canonical: "https://mindvector.tech/" },
   openGraph: {
-    title: "MindVector | Digital products built with intent.",
-    description: "Mobile apps, web platforms, business systems, and applied AI—designed and built as one system.",
+    title: "MindVector | Products we build. Teams we help build.",
+    description: "MindVector builds software products of its own and creates mobile apps, web platforms, business systems, and applied AI for ambitious teams.",
     url: "https://mindvector.tech/",
     siteName: "MindVector",
     locale: "en_US",
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "MindVector | Digital products built with intent.",
-    description: "An independent digital product studio.",
+    title: "MindVector | Digital Products, Apps, Software & AI",
+    description: "A product company and development partner for ambitious teams.",
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   icons: { icon: "/favicon.svg" },
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": "https://mindvector.tech/#organization", name: "MindVector", url: "https://mindvector.tech/", logo: "https://mindvector.tech/favicon.svg", description: "MindVector is an independent digital product studio for mobile, web, business systems and applied AI." },
+      { "@type": "Organization", "@id": "https://mindvector.tech/#organization", name: "MindVector", url: "https://mindvector.tech/", logo: "https://mindvector.tech/favicon.svg", description: "MindVector is a digital product company and development partner for mobile apps, web platforms, business software and applied AI." },
       { "@type": "WebSite", "@id": "https://mindvector.tech/#website", name: "MindVector", url: "https://mindvector.tech/", publisher: { "@id": "https://mindvector.tech/#organization" }, inLanguage: "en-US" },
     ],
   };

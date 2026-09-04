@@ -29,10 +29,10 @@ export default function Home() {
 
       <section className="hero" id="content">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> Independent digital product studio</p>
-          <h1>Ideas worth<br /><em>building well.</em></h1>
-          <p className="hero-lede">MindVector partners with ambitious teams to design and build digital products people choose to use.</p>
-          <div className="hero-actions"><a className="button button-primary" href="#contact">Tell us what you&apos;re building <b>→</b></a><a className="text-link" href="#services">Explore capabilities <span>↓</span></a></div>
+          <p className="eyebrow"><span /> Product company &amp; development partner</p>
+          <h1>Products we build.<br /><em>Teams we help build.</em></h1>
+          <p className="hero-lede">MindVector creates software products of its own—and works alongside ambitious teams to turn sharp ideas into mobile apps, web platforms, business systems and applied AI.</p>
+          <div className="hero-actions"><a className="button button-primary" href="#contact">Build with MindVector <b>→</b></a><a className="text-link" href="#products">Explore our products <span>↓</span></a></div>
         </div>
         <div className="hero-system" aria-label="A visual representation of product systems connecting into one release" role="img">
           <div className="system-label label-a">PRODUCT / 01</div><div className="system-label label-b">SHIPPED WITH INTENT</div>
@@ -45,23 +45,32 @@ export default function Home() {
 
       <section className="intro section">
         <p className="section-kicker">01 / THE STUDIO</p>
-        <div className="intro-layout"><h2>Business-minded.<br /><em>Product-obsessed.</em></h2><div><p className="big-copy">We combine strategy, product design and engineering to turn ambitious ideas into software that is useful, distinct and built to last.</p><p className="muted">From a first prototype to a platform that needs to scale, we bring the senior attention a meaningful product deserves.</p></div></div>
+        <div className="intro-layout"><h2>We ship our own.<br /><em>Then help you ship yours.</em></h2><div><p className="big-copy">Building and operating products gives us a practical point of view: what launches cleanly, what people adopt and what survives everyday use.</p><p className="muted">That same product judgement goes into every partnership—from a first prototype to a platform ready to scale.</p></div></div>
         <div className="signal-row" aria-label="MindVector capabilities"><span>PRODUCT STRATEGY</span><i /><span>DESIGN</span><i /><span>ENGINEERING</span><i /><span>INTELLIGENCE</span></div>
       </section>
 
+      <section className="products section" id="products">
+        <div className="section-heading"><p className="section-kicker">02 / OUR PRODUCTS</p><p>Software born from real operating problems, built with the same care we bring to client work.</p></div>
+        <div className="product-showcase">
+          <div className="product-showcase-copy"><p className="product-label">NOW LIVE / FUELLEDGER</p><h2>Every shift.<br /><em>Under control.</em></h2><p>FuelLedger is the operating system for petrol pumps—bringing people, fuel, inventory, collections, finance and daily business intelligence into one clear view.</p><div className="product-points"><span>Operations &amp; reconciliation</span><span>Inventory, MS, HSD &amp; Lubes</span><span>Owner intelligence &amp; alerts</span></div><a className="text-link" href="/apps/fuel-ledger/">Discover FuelLedger <span>↗</span></a></div>
+          <div className="product-showcase-panel" aria-label="FuelLedger product overview"><div><small>FUELLEDGER / DAILY BRIEF</small><strong>Your outlet,<br />in focus.</strong><p>Clear signals for the decisions that matter today.</p></div><span>01</span></div>
+        </div>
+        <div className="product-note"><span>WHAT WE&apos;RE BUILDING</span><p>A growing portfolio of focused software products—alongside original work for teams that need a committed product partner.</p></div>
+      </section>
+
       <section className="services section" id="services">
-        <div className="section-heading"><p className="section-kicker">02 / CAPABILITIES</p><p>One partner across the work that turns an idea into a living product.</p></div>
+        <div className="section-heading"><p className="section-kicker">03 / BUILD WITH US</p><p>One senior partner across the work that turns an idea into a living product.</p></div>
         <div className="service-grid">{services.map((service) => <article className={`service-card ${service.className}`} key={service.number}><div className="service-top"><span>{service.number}</span><i>↗</i></div><div className="service-art" aria-hidden="true"><b /><b /><b /></div><div className="service-content"><h3>{service.title}</h3><p>{service.text}</p><ul>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div></article>)}</div>
       </section>
 
       <section className="statement section">
-        <p className="section-kicker">03 / WHAT WE BELIEVE</p>
+        <p className="section-kicker">04 / WHAT WE BELIEVE</p>
         <p className="statement-copy">Technology should make a business <em>clearer, quicker and more human.</em> The best products create their own momentum.</p>
         <div className="statement-note"><span>OUR STANDARD</span><p>Thoughtful in the details.<br />Direct in the decisions.<br /><b>Useful in the real world.</b></p></div>
       </section>
 
       <section className="approach section" id="approach">
-        <div className="section-heading"><p className="section-kicker">04 / HOW WE WORK</p><h2>Less theatre.<br /><em>More progress.</em></h2></div>
+        <div className="section-heading"><p className="section-kicker">05 / HOW WE WORK</p><h2>Less theatre.<br /><em>More progress.</em></h2></div>
         <div className="process-list">{process.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p><i>→</i></article>)}</div>
       </section>
 
