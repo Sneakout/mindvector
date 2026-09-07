@@ -28,7 +28,7 @@ export function AppsMenu({ open = false }: { open?: boolean }) {
     <summary>Apps</summary>
     <div className="apps-dropdown">
       <a href="/apps/fresh-fold/">Fresh Fold <span>↗</span></a>
-      <a href="/apps/fuel-ledger/">Fuel Ledger <span>↗</span></a>
+      <a href="/apps/fuel-ledger/">FuelNerve <span>↗</span></a>
     </div>
   </details>;
 }

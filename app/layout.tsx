@@ -7,10 +7,10 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "MindVector | Digital Products, Apps, Software & AI",
-  description: "MindVector builds its own software products and partners with ambitious teams to create mobile apps, web platforms, business systems, and applied AI.",
+  description: "MindVector creates FuelNerve, Fresh Fold and other focused software products—and builds mobile apps, web platforms, business systems and applied AI for ambitious teams.",
   metadataBase: new URL("https://mindvector.tech"),
   applicationName: "MindVector",
-  keywords: ["MindVector", "digital product company", "product development studio", "iOS app development", "Android app development", "web application development", "business software", "CRM development", "billing systems", "AI development", "machine learning"],
+  keywords: ["MindVector", "FuelNerve", "Fresh Fold", "digital product company", "product development studio", "iOS app development", "Android app development", "web application development", "business software", "CRM development", "billing systems", "AI development", "machine learning"],
   authors: [{ name: "MindVector" }],
   creator: "MindVector",
   publisher: "MindVector",
@@ -39,6 +39,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     "@graph": [
       { "@type": "Organization", "@id": "https://mindvector.tech/#organization", name: "MindVector", url: "https://mindvector.tech/", logo: "https://mindvector.tech/favicon.svg", description: "MindVector is a digital product company and development partner for mobile apps, web platforms, business software and applied AI." },
       { "@type": "WebSite", "@id": "https://mindvector.tech/#website", name: "MindVector", url: "https://mindvector.tech/", publisher: { "@id": "https://mindvector.tech/#organization" }, inLanguage: "en-US" },
+      { "@type": "SoftwareApplication", name: "FuelNerve", url: "https://mindvector.tech/apps/fuel-ledger/", applicationCategory: "BusinessApplication", description: "An intelligent operating system for petrol pumps, covering shifts, inventory, collections, finance and owner intelligence.", creator: { "@id": "https://mindvector.tech/#organization" } },
+      { "@type": "SoftwareApplication", name: "Fresh Fold", url: "https://mindvector.tech/apps/fresh-fold/", applicationCategory: "LifestyleApplication", description: "A connected laundry and garment-care platform for customers, service partners and delivery teams.", creator: { "@id": "https://mindvector.tech/#organization" } },
     ],
   };
   return <html lang="en"><body className={`${geistSans.variable} ${geistMono.variable}`}>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></body></html>;

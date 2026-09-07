@@ -55,7 +55,11 @@ export default function Home() {
           <div className="product-showcase-copy"><p className="product-label">NOW LIVE / FUELNERVE</p><h2>Every shift.<br /><em>Under control.</em></h2><p>FuelNerve is the operating system for petrol pumps—bringing people, fuel, inventory, collections, finance and daily business intelligence into one clear view.</p><div className="product-points"><span>Operations &amp; reconciliation</span><span>Inventory, MS, HSD &amp; Lubes</span><span>Owner intelligence &amp; alerts</span></div><a className="text-link" href="/apps/fuel-ledger/">Discover FuelNerve <span>↗</span></a></div>
           <div className="product-showcase-panel" aria-label="FuelNerve product overview"><div><small>FUELNERVE / DAILY BRIEF</small><strong>Your outlet,<br />in focus.</strong><p>Clear signals for the decisions that matter today.</p></div><span>01</span></div>
         </div>
-        <div className="product-note"><span>WHAT WE&apos;RE BUILDING</span><p>A growing portfolio of focused software products—alongside original work for teams that need a committed product partner.</p></div>
+        <div className="product-showcase fresh-fold-showcase">
+          <div className="product-showcase-panel fresh-fold-panel" aria-label="Fresh Fold product overview"><div className="fresh-fold-ribbon" aria-hidden="true"><i /><i /><i /></div><div><small>FRESH FOLD / GARMENT CARE</small><strong>Care for the things<br />you love.</strong><p>A coordinated journey from collection to closet.</p></div><span>02</span></div>
+          <div className="product-showcase-copy"><p className="product-label">IN DEVELOPMENT / FRESH FOLD</p><h2>Laundry care.<br /><em>Beautifully connected.</em></h2><p>Fresh Fold brings customers, trusted laundry partners and delivery teams into one thoughtful platform—with clear progress at every step.</p><div className="product-points"><span>Doorstep booking &amp; tracking</span><span>Partner operations &amp; quality</span><span>Pickup and delivery coordination</span></div><a className="text-link" href="/apps/fresh-fold/">Discover Fresh Fold <span>↗</span></a></div>
+        </div>
+        <div className="product-note"><span>PRODUCTS WITH A PURPOSE</span><p>FuelNerve brings clarity to fuel-station operations. Fresh Fold reimagines garment care. Both are shaped around real work and everyday use.</p></div>
       </section>
 
       <section className="services section" id="services">
