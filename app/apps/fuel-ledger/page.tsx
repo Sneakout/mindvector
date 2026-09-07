@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FuelNerve (formerly FuelLedger) | Petrol pump management",
-  description: "FuelNerve, formerly FuelLedger, is the complete operating system for petrol pumps, with daily AI owner briefings, anomaly alerts and specialist agents.",
+  title: "FuelNerve | Petrol pump management, under control.",
+  description: "FuelNerve is the complete operating system for petrol pumps, with daily AI owner briefings, anomaly alerts and specialist agents.",
   alternates: { canonical: "https://mindvector.tech/apps/fuel-ledger" },
-  keywords: ["FuelNerve", "FuelLedger", "petrol pump management", "fuel station management system", "petrol pump software", "fuel inventory", "pump reconciliation", "petrol pump AI"],
+  keywords: ["FuelNerve", "petrol pump management", "fuel station management system", "petrol pump software", "fuel inventory", "pump reconciliation", "petrol pump AI"],
   openGraph: {
     title: "FuelNerve | The operating system for petrol pumps",
     description: "Run staff, shifts, fuel and non-fuel inventory, sales, collections, accounting and daily AI-led owner insights from one system.",
@@ -73,7 +73,7 @@ const pricingFaqs = [
 
 export default function FuelNervePage() {
   return <main className="fuel-page">
-    <header className="fuel-nav"><a href="/" className="fuel-brand" aria-label="MindVector home"><img className="fuel-logo" src="/fuel-ledger-mark.svg" alt="" /><span>FuelNerve<small>formerly FuelLedger</small></span></a><nav aria-label="FuelNerve navigation"><a href="#product">Product</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="#intelligence-package">AI package</a><a href="#pricing">Pricing</a></nav><a className="fuel-nav-cta" href="https://fuelledger.mindvector.tech/login">Sign in <span>↗</span></a></header>
+    <header className="fuel-nav"><a href="/" className="fuel-brand" aria-label="MindVector home"><img className="fuel-logo" src="/fuel-ledger-mark.svg" alt="" />FuelNerve</a><nav aria-label="FuelNerve navigation"><a href="#product">Product</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="#intelligence-package">AI package</a><a href="#pricing">Pricing</a></nav><a className="fuel-nav-cta" href="https://fuelledger.mindvector.tech/login">Sign in <span>↗</span></a></header>
     <section className="fuel-hero" id="product">
       <div className="fuel-hero-copy"><p className="fuel-eyebrow"><span /> The petrol pump OS with an AI agent team</p><h1>Every shift.<br /><em>Under control.</em></h1><p>FuelNerve connects people, fuel stock, collections, accounting and every revenue line. Six specialist AI agents review the details so owners understand the business and act sooner.</p><div className="fuel-agent-intro"><span>NEW · FUELNERVE INTELLIGENCE</span><p><b>Six specialist AI agents</b> review shifts, stock, credit, purchases and profit—then give owners clear, evidence-backed actions.</p><a href="#intelligence-package" aria-label="Explore FuelNerve AI agents">Explore agents →</a></div><div className="fuel-actions"><a className="fuel-primary" href="https://fuelledger.mindvector.tech/demo">Try live demo <b>→</b></a><a className="fuel-link" href="#operations">Explore the OS <span>↓</span></a></div></div>
       <div className="fuel-dashboard" aria-label="FuelNerve dashboard preview" role="img"><div className="dashboard-top"><span>GREENWAY FUEL POINT</span><i>● LIVE</i></div><div className="dashboard-title"><p>Tuesday, 1 September</p><b>Greenway Fuel Point, under control</b><span>Today&apos;s performance, outlet health, and what needs attention.</span></div><div className="fuel-metrics"><div><small>SALES TODAY</small><strong>₹3,40,948</strong><span>10 transactions</span></div><div><small>COLLECTED TODAY</small><strong>₹2,93,295</strong><span>Cash, UPI, card & other</span></div><div><small>NET PROFIT TODAY</small><strong>₹29,826</strong><span>Sales less product cost</span></div></div><div className="dashboard-lower"><section><small>7-DAY PERFORMANCE</small><h2>₹22,60,916 <span>in sales</span></h2><div className="bar-chart" aria-hidden="true">{[59,68,63,77,71,82,74].map((height, index) => <i key={index} style={{ "--height": `${height}%` } as React.CSSProperties} />)}</div></section><aside><small>ATTENTION</small><h3>What needs action</h3><p><b>3 shifts</b> waiting for reconciliation <span>→</span></p><p><b>1 stock position</b> at zero or below <span>→</span></p></aside></div></div>
