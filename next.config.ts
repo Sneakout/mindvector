@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/apps/fuel-ledger",
+        destination: "/apps/fuelnerve",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

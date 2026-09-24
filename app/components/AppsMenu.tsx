@@ -24,11 +24,17 @@ export function AppsMenu({ open = false }: { open?: boolean }) {
     };
   }, []);
 
-  return <details ref={menuRef} className="apps-menu" open={open || undefined}>
-    <summary>Apps</summary>
-    <div className="apps-dropdown">
-      <a href="/apps/fresh-fold/">Fresh Fold <span>↗</span></a>
-      <a href="/apps/fuel-ledger/">FuelNerve <span>↗</span></a>
-    </div>
-  </details>;
+  return (
+    <details ref={menuRef} className="apps-menu" open={open || undefined}>
+      <summary>Apps</summary>
+      <div className="apps-dropdown">
+        <a href="/apps/fresh-fold/">
+          Fresh Fold <span>↗</span>
+        </a>
+        <a href="/apps/fuelnerve">
+          FuelNerve <span>↗</span>
+        </a>
+      </div>
+    </details>
+  );
 }
