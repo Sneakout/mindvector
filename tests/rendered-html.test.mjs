@@ -23,6 +23,24 @@ test("MindVector presents FuelNerve as a first-party product", async () => {
   );
 });
 
+test("MindVector exposes consistent professional search metadata", async () => {
+  const [home, layout] = await Promise.all([
+    read("../app/page.tsx"),
+    read("../app/layout.tsx"),
+  ]);
+
+  assert.match(
+    layout,
+    /MindVector — Digital Product & Software Studio/,
+  );
+  assert.match(layout, /alternateName: "mindvector\.tech"/);
+  assert.match(layout, /mindvector-icon-512\.png/);
+  assert.match(layout, /"@type": "WebPage"/);
+  assert.match(home, /href="#products">Our products/);
+  assert.match(home, /href="\/apps\/fuelnerve">FuelNerve/);
+  assert.match(home, /href="\/apps\/fresh-fold\/">Fresh Fold/);
+});
+
 test("FuelNerve has a dedicated canonical search landing page", async () => {
   const [page, sitemap, config] = await Promise.all([
     read("../app/apps/fuelnerve/page.tsx"),

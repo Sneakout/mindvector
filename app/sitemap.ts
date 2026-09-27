@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-09-24");
+  const lastModified = new Date("2026-09-27");
   return [
     {
       url: "https://mindvector.tech/",

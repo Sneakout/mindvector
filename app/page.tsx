@@ -402,8 +402,10 @@ export default function Home() {
           MindVector
         </a>
         <div className="footer-links">
+          <a href="#products">Our products</a>
+          <a href="/apps/fuelnerve">FuelNerve</a>
+          <a href="/apps/fresh-fold/">Fresh Fold</a>
           <a href="#services">Capabilities</a>
-          <a href="#approach">Approach</a>
           <a href="mailto:hello@mindvector.tech">Contact</a>
         </div>
         <p>© 2026 MindVector</p>
