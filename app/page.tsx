@@ -206,8 +206,8 @@ export default function Home() {
               <span>Inventory, MS, HSD &amp; Lubes</span>
               <span>Owner intelligence &amp; alerts</span>
             </div>
-            <a className="text-link" href="/apps/fuelnerve">
-              Discover FuelNerve <span>↗</span>
+            <a className="text-link" href="/petrol-pump-management-software">
+              FuelNerve petrol pump software <span>↗</span>
             </a>
           </div>
           <div
@@ -404,6 +404,7 @@ export default function Home() {
         <div className="footer-links">
           <a href="#products">Our products</a>
           <a href="/apps/fuelnerve">FuelNerve</a>
+          <a href="/petrol-pump-management-software">Petrol pump software</a>
           <a href="/apps/fresh-fold/">Fresh Fold</a>
           <a href="#services">Capabilities</a>
           <a href="mailto:hello@mindvector.tech">Contact</a>

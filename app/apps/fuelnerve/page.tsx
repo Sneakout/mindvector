@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FuelNerve | Petrol Pump Management Software & AI",
@@ -291,6 +292,12 @@ export default function FuelNervePage() {
               Explore the OS <span>↓</span>
             </a>
           </div>
+          <p className="fuel-category-link">
+            Looking for the complete category overview?{" "}
+            <Link href="/petrol-pump-management-software">
+              Explore FuelNerve petrol pump management software →
+            </Link>
+          </p>
         </div>
         <div
           className="fuel-dashboard"
@@ -812,7 +819,9 @@ export default function FuelNervePage() {
           FuelNerve
         </a>
         <p>© 2026 FuelNerve</p>
-        <a href="/">A MindVector product ↗</a>
+        <Link href="/petrol-pump-management-software">
+          Petrol pump management software ↗
+        </Link>
       </footer>
     </main>
   );

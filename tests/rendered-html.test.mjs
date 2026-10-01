@@ -60,3 +60,25 @@ test("FuelNerve has a dedicated canonical search landing page", async () => {
   assert.match(config, /destination: "\/apps\/fuelnerve"/);
   assert.match(config, /permanent: true/);
 });
+
+test("Petrol pump management software has a dedicated category landing page", async () => {
+  const [page, sitemap, home, fuelPage] = await Promise.all([
+    read("../app/petrol-pump-management-software/page.tsx"),
+    read("../app/sitemap.ts"),
+    read("../app/page.tsx"),
+    read("../app/apps/fuelnerve/page.tsx"),
+  ]);
+
+  assert.match(page, /Petrol Pump Management Software in India \| FuelNerve/);
+  assert.match(page, /canonical/);
+  assert.match(page, /"@type": "SoftwareApplication"/);
+  assert.match(page, /"@type": "BreadcrumbList"/);
+  assert.match(page, /"@type": "FAQPage"/);
+  assert.match(page, /Petrol pump[\s\S]*management software/);
+  assert.match(
+    sitemap,
+    /https:\/\/mindvector\.tech\/petrol-pump-management-software/,
+  );
+  assert.match(home, /href="\/petrol-pump-management-software"/);
+  assert.match(fuelPage, /href="\/petrol-pump-management-software"/);
+});
