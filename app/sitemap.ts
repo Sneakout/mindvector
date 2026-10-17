@@ -1,7 +1,21 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-10-01");
+  const lastModified = new Date("2026-10-17");
+  const fuelNerveGuides = [
+    "petrol-pump-dsr-software",
+    "petrol-pump-inventory-management",
+    "petrol-pump-shift-reconciliation",
+    "petrol-pump-accounting-software",
+    "petrol-pump-credit-management",
+    "petrol-pump-software-pricing-india",
+  ].map((slug) => ({
+    url: `https://mindvector.tech/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.82,
+  }));
+
   return [
     {
       url: "https://mindvector.tech/",
@@ -27,5 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    ...fuelNerveGuides,
   ];
 }

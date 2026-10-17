@@ -82,3 +82,31 @@ test("Petrol pump management software has a dedicated category landing page", as
   assert.match(home, /href="\/petrol-pump-management-software"/);
   assert.match(fuelPage, /href="\/petrol-pump-management-software"/);
 });
+
+test("FuelNerve exposes a connected petrol pump software topic cluster", async () => {
+  const routes = [
+    ["petrol-pump-dsr-software", /Petrol Pump DSR Software/],
+    ["petrol-pump-inventory-management", /Petrol Pump Inventory Management Software/],
+    ["petrol-pump-shift-reconciliation", /Petrol Pump Shift & Nozzle Reconciliation Software/],
+    ["petrol-pump-accounting-software", /Petrol Pump Accounting Software/],
+    ["petrol-pump-credit-management", /Petrol Pump Credit Customer Management Software/],
+    ["petrol-pump-software-pricing-india", /Petrol Pump Software Price in India/],
+  ];
+  const [sitemap, category, shared, ...pages] = await Promise.all([
+    read("../app/sitemap.ts"),
+    read("../app/petrol-pump-management-software/page.tsx"),
+    read("../app/components/FuelNerveTopicPage.tsx"),
+    ...routes.map(([slug]) => read(`../app/${slug}/page.tsx`)),
+  ]);
+
+  assert.match(shared, /"@type": "WebPage"/);
+  assert.match(shared, /"@type": "BreadcrumbList"/);
+  assert.match(shared, /"@type": "FAQPage"/);
+
+  routes.forEach(([slug, title], index) => {
+    assert.match(pages[index], title);
+    assert.match(pages[index], new RegExp(`https:\\/\\/mindvector\\.tech\\/${slug}`));
+    assert.match(sitemap, new RegExp(slug));
+    assert.match(category, new RegExp(`href: "\\/${slug}"`));
+  });
+});

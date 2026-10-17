@@ -101,6 +101,39 @@ const workflow = [
   ["05", "See the business", "Open owner reports or an Intelligence briefing with the records behind it."],
 ];
 
+const operatingGuides = [
+  {
+    href: "/petrol-pump-dsr-software",
+    title: "DSR software",
+    copy: "Build the daily sales report from nozzle, collection, stock and expense records.",
+  },
+  {
+    href: "/petrol-pump-shift-reconciliation",
+    title: "Shift reconciliation",
+    copy: "Compare metered sales with cash, UPI, card, fleet and customer credit.",
+  },
+  {
+    href: "/petrol-pump-inventory-management",
+    title: "Inventory management",
+    copy: "Connect tanks, deliveries, dips, density, MS, HSD, lubricants and AdBlue.",
+  },
+  {
+    href: "/petrol-pump-credit-management",
+    title: "Credit management",
+    copy: "Keep customer, fleet and vehicle credit connected to source transactions.",
+  },
+  {
+    href: "/petrol-pump-accounting-software",
+    title: "Accounting software",
+    copy: "Link sales, purchases, suppliers, expenses, salaries and reports.",
+  },
+  {
+    href: "/petrol-pump-software-pricing-india",
+    title: "Pricing in India",
+    copy: "Compare monthly, yearly, lifetime, setup and optional service costs.",
+  },
+];
+
 const faqs = [
   [
     "What is petrol pump management software?",
@@ -374,6 +407,29 @@ export default function PetrolPumpManagementSoftwarePage() {
         </div>
       </section>
 
+      <section className={styles.topicCluster}>
+        <div className={styles.sectionHeading}>
+          <div>
+            <p className={styles.sectionLabel}>PETROL PUMP OPERATING GUIDES</p>
+            <h2>Understand each workflow before choosing software.</h2>
+          </div>
+          <p>
+            Explore practical guides to the records, controls and questions that
+            matter across a petrol pump&apos;s daily operation.
+          </p>
+        </div>
+        <div className={styles.topicGrid}>
+          {operatingGuides.map((guide, index) => (
+            <Link href={guide.href} key={guide.href}>
+              <small>{String(index + 1).padStart(2, "0")}</small>
+              <h3>{guide.title}</h3>
+              <p>{guide.copy}</p>
+              <span>Read guide ↗</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.workflow} id="workflow">
         <div className={styles.workflowIntro}>
           <p className={styles.sectionLabel}>A CONNECTED WORKDAY</p>
@@ -586,6 +642,8 @@ export default function PetrolPumpManagementSoftwarePage() {
         <div>
           <Link href="/">MindVector</Link>
           <Link href="/apps/fuelnerve">FuelNerve product</Link>
+          <Link href="/petrol-pump-dsr-software">DSR guide</Link>
+          <Link href="/petrol-pump-software-pricing-india">Pricing guide</Link>
           <a href="https://fuel.mindvector.tech/demo">Live demo</a>
           <a href="mailto:hello@mindvector.tech">Contact</a>
         </div>

@@ -164,7 +164,7 @@
 .attentionCard b, .attentionCard span { display: block; }
 .attentionCard span { margin-top: 3px; color: #74877e; }
 
-.definition, .features, .workflow, .comparison, .pricing, .faq {
+.definition, .features, .topicCluster, .workflow, .comparison, .pricing, .faq {
   padding: clamp(95px, 12vw, 175px) clamp(22px, 6.7vw, 112px);
   border-top: 1px solid var(--line);
 }
@@ -192,6 +192,15 @@
 .moduleGrid h3 { margin: 75px 0 13px; font-size: 27px; font-weight: 600; letter-spacing: -0.055em; }
 .moduleGrid p { min-height: 82px; margin: 0; color: #5c7168; font-size: 14px; line-height: 1.65; }
 .moduleGrid small { display: block; margin-top: 22px; color: #267458; font: 9px/1.5 var(--font-geist-mono), monospace; letter-spacing: 0.04em; }
+
+.topicCluster { background: white; }
+.topicGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; margin-top: 72px; }
+.topicGrid a { min-height: 255px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: #f8fbf8; }
+.topicGrid a:hover { border-color: #87aa99; background: #f1f8f3; transform: translateY(-2px); }
+.topicGrid small { color: #658176; font: 9px var(--font-geist-mono), monospace; letter-spacing: .12em; }
+.topicGrid h3 { margin: 53px 0 12px; font-size: 25px; letter-spacing: -.055em; }
+.topicGrid p { margin: 0; color: #61776d; font-size: 13px; line-height: 1.65; }
+.topicGrid span { margin-top: auto; padding-top: 24px; color: #257154; font-size: 11px; font-weight: 700; }
 
 .workflow { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 9vw; background: var(--green); color: white; }
 .workflow h2 { margin-top: 20px; color: white; }
@@ -288,6 +297,7 @@
   .moduleGrid article:nth-child(2n) { border-right: 0; }
   .moduleGrid article:nth-child(n+5) { border-bottom: 0; }
   .priceCards { max-width: 780px; }
+  .topicGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 620px) {
@@ -300,6 +310,7 @@
   .primaryButton, .secondaryButton, .finalCta a { width: 100%; }
   .controlPanel { padding: 15px; border-radius: 18px; }
   .metrics, .panelLower, .moduleGrid, .priceCards { grid-template-columns: 1fr; }
+  .topicGrid { grid-template-columns: 1fr; }
   .metrics article { padding: 14px; }
   .moduleGrid article, .moduleGrid article:nth-child(n) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .moduleGrid article:last-child { border-bottom: 0; }
