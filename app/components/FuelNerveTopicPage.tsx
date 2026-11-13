@@ -41,6 +41,24 @@ export default function FuelNerveTopicPage({
 }: {
   content: TopicPageContent;
 }) {
+  const isDedicatedSite = content.canonical.startsWith(
+    "https://fuelnerve.mindvector.tech",
+  );
+  const siteHome = isDedicatedSite ? "/" : "/apps/fuelnerve";
+  const overviewHref = isDedicatedSite
+    ? "/"
+    : "/petrol-pump-management-software";
+  const websiteId = isDedicatedSite
+    ? "https://fuelnerve.mindvector.tech/#website"
+    : "https://mindvector.tech/#website";
+  const softwareId = isDedicatedSite
+    ? "https://fuelnerve.mindvector.tech/#software"
+    : "https://mindvector.tech/apps/fuelnerve#software";
+  const rootName = isDedicatedSite ? "FuelNerve" : "MindVector";
+  const rootUrl = isDedicatedSite
+    ? "https://fuelnerve.mindvector.tech/"
+    : "https://mindvector.tech/";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -50,8 +68,8 @@ export default function FuelNerveTopicPage({
         url: content.canonical,
         name: content.title,
         description: content.introduction,
-        isPartOf: { "@id": "https://mindvector.tech/#website" },
-        about: { "@id": "https://mindvector.tech/apps/fuelnerve#software" },
+        isPartOf: { "@id": websiteId },
+        about: { "@id": softwareId },
         inLanguage: "en-IN",
       },
       {
@@ -60,14 +78,16 @@ export default function FuelNerveTopicPage({
           {
             "@type": "ListItem",
             position: 1,
-            name: "MindVector",
-            item: "https://mindvector.tech/",
+            name: rootName,
+            item: rootUrl,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Petrol Pump Management Software",
-            item: "https://mindvector.tech/petrol-pump-management-software",
+            item: isDedicatedSite
+              ? "https://fuelnerve.mindvector.tech/"
+              : "https://mindvector.tech/petrol-pump-management-software",
           },
           {
             "@type": "ListItem",
@@ -98,7 +118,7 @@ export default function FuelNerveTopicPage({
       />
 
       <header className={styles.header}>
-        <Link className={styles.brand} href="/apps/fuelnerve">
+        <Link className={styles.brand} href={siteHome}>
           <Image
             src="/fuelnerve-mark.svg"
             width={46}
@@ -112,7 +132,7 @@ export default function FuelNerveTopicPage({
           </span>
         </Link>
         <nav aria-label="FuelNerve topic navigation">
-          <Link href="/petrol-pump-management-software">Software overview</Link>
+          <Link href={overviewHref}>Software overview</Link>
           <a href="#guide">Guide</a>
           <a href="#questions">Questions</a>
         </nav>
@@ -122,9 +142,9 @@ export default function FuelNerveTopicPage({
       </header>
 
       <div className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <Link href="/">MindVector</Link>
+        <a href={isDedicatedSite ? "https://mindvector.tech/" : "/"}>MindVector</a>
         <span>/</span>
-        <Link href="/petrol-pump-management-software">Petrol pump software</Link>
+        <Link href={overviewHref}>Petrol pump software</Link>
         <span>/</span>
         <b>{content.eyebrow}</b>
       </div>
@@ -142,7 +162,7 @@ export default function FuelNerveTopicPage({
             <a href="https://fuel.mindvector.tech/demo">
               Try the live demo <span>→</span>
             </a>
-            <Link href="/petrol-pump-management-software">
+            <Link href={overviewHref}>
               Explore the complete OS <span>↗</span>
             </Link>
           </div>
@@ -250,7 +270,7 @@ export default function FuelNerveTopicPage({
             <p className={styles.sectionLabel}>CONTINUE THE BUYER&apos;S GUIDE</p>
             <h2>See how the other operating records connect.</h2>
           </div>
-          <Link href="/petrol-pump-management-software">
+          <Link href={overviewHref}>
             View complete software overview →
           </Link>
         </div>
@@ -279,13 +299,13 @@ export default function FuelNerveTopicPage({
       </section>
 
       <footer className={styles.footer}>
-        <Link className={styles.brand} href="/apps/fuelnerve">
+        <Link className={styles.brand} href={siteHome}>
           <Image src="/fuelnerve-mark.svg" width={42} height={42} alt="" />
           <span><b>FuelNerve</b><small>A MindVector product</small></span>
         </Link>
         <div>
-          <Link href="/">MindVector</Link>
-          <Link href="/petrol-pump-management-software">Petrol pump software</Link>
+          <a href="https://mindvector.tech/">MindVector</a>
+          <Link href={overviewHref}>Petrol pump software</Link>
           <a href="https://fuel.mindvector.tech/demo">Live demo</a>
           <a href="mailto:hello@mindvector.tech">Contact</a>
         </div>

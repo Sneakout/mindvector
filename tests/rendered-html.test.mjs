@@ -5,9 +5,9 @@ import test from "node:test";
 const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
 
 test("MindVector presents FuelNerve as a first-party product", async () => {
-  const [home, layout, appsMenu, mobileMenu] = await Promise.all([
+  const [home, structuredData, appsMenu, mobileMenu] = await Promise.all([
     read("../app/page.tsx"),
-    read("../app/layout.tsx"),
+    read("../app/components/MindVectorStructuredData.tsx"),
     read("../app/components/AppsMenu.tsx"),
     read("../app/components/MobileMenu.tsx"),
   ]);
@@ -16,26 +16,28 @@ test("MindVector presents FuelNerve as a first-party product", async () => {
   assert.match(home, /href="\/apps\/fuelnerve"/);
   assert.match(appsMenu, /href="\/apps\/fuelnerve"/);
   assert.match(mobileMenu, /href="\/apps\/fuelnerve"/);
-  assert.match(layout, /https:\/\/mindvector\.tech\/apps\/fuelnerve/);
+  assert.match(structuredData, /https:\/\/mindvector\.tech\/apps\/fuelnerve/);
   assert.doesNotMatch(
-    `${home}${layout}${appsMenu}${mobileMenu}`,
+    `${home}${structuredData}${appsMenu}${mobileMenu}`,
     /apps\/fuel-ledger/,
   );
 });
 
 test("MindVector exposes consistent professional search metadata", async () => {
-  const [home, layout] = await Promise.all([
+  const [home, layout, structuredData] = await Promise.all([
     read("../app/page.tsx"),
     read("../app/layout.tsx"),
+    read("../app/components/MindVectorStructuredData.tsx"),
   ]);
 
   assert.match(
     layout,
     /MindVector — Digital Product & Software Studio/,
   );
-  assert.match(layout, /alternateName: "mindvector\.tech"/);
+  assert.match(structuredData, /alternateName: "mindvector\.tech"/);
   assert.match(layout, /mindvector-icon-512\.png/);
-  assert.match(layout, /"@type": "WebPage"/);
+  assert.match(structuredData, /"@type": "WebPage"/);
+  assert.match(home, /<MindVectorStructuredData \/>/);
   assert.match(home, /href="#products">Our products/);
   assert.match(home, /href="\/apps\/fuelnerve">FuelNerve/);
   assert.match(home, /href="\/apps\/fresh-fold\/">Fresh Fold/);
@@ -80,7 +82,29 @@ test("Petrol pump management software has a dedicated category landing page", as
     /https:\/\/mindvector\.tech\/petrol-pump-management-software/,
   );
   assert.match(home, /href="\/petrol-pump-management-software"/);
-  assert.match(fuelPage, /href="\/petrol-pump-management-software"/);
+  assert.match(fuelPage, /overviewHref/);
+});
+
+test("FuelNerve has an independent searchable hostname", async () => {
+  const [home, proxy, sitemap, robots, topicRoute, fuelPage] =
+    await Promise.all([
+      read("../app/fuelnerve-site/page.tsx"),
+      read("../proxy.ts"),
+      read("../app/fuelnerve-sitemap.xml/route.ts"),
+      read("../app/fuelnerve-robots.txt/route.ts"),
+      read("../app/fuelnerve-site/[slug]/page.tsx"),
+      read("../app/apps/fuelnerve/page.tsx"),
+    ]);
+
+  assert.match(home, /FuelNerve \| Petrol Pump Management Software in India/);
+  assert.match(home, /fuelnerve-icon-512\.png/);
+  assert.match(proxy, /FUELNERVE_MARKETING_HOST/);
+  assert.match(proxy, /FUELNERVE_APP_ORIGIN/);
+  assert.match(sitemap, /FUELNERVE_GUIDE_SLUGS/);
+  assert.match(robots, /Sitemap:/);
+  assert.match(topicRoute, /siteName: "FuelNerve"/);
+  assert.match(fuelPage, /"@type": "WebSite"/);
+  assert.match(fuelPage, /siteUrl/);
 });
 
 test("FuelNerve exposes a connected petrol pump software topic cluster", async () => {

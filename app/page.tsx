@@ -1,6 +1,7 @@
 import { Mark } from "./components/Mark";
 import { AppsMenu } from "./components/AppsMenu";
 import { MobileMenu } from "./components/MobileMenu";
+import { MindVectorStructuredData } from "./components/MindVectorStructuredData";
 
 const services = [
   {
@@ -59,6 +60,7 @@ const process = [
 export default function Home() {
   return (
     <main id="top">
+      <MindVectorStructuredData />
       <a className="skip" href="#content">
         Skip to content
       </a>

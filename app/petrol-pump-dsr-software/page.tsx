@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const content: TopicPageContent = {
+export const content: TopicPageContent = {
   canonical,
   eyebrow: "PETROL PUMP DSR SOFTWARE",
   title: "Build the daily sales report",

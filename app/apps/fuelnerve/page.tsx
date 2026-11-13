@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -37,27 +38,6 @@ export const metadata: Metadata = {
       "Complete petrol pump operations, daily control and AI-led owner insights in one place.",
   },
 };
-
-const features = [
-  "Shift, nozzle and attendant management",
-  "Shift-wise transactions and profitability",
-  "Tank stock, dips and density management",
-  "MS, HSD, lubricants and AdBlue inventory",
-  "Stock transfers, purchases and stock reports",
-  "Sales and collection reconciliation",
-  "Bank statement reconciliation",
-  "Customers, credit billing and fleet management",
-  "Credit-collection reports and outstanding reminders",
-  "Purchases, expenses and salaries",
-  "Complete GST management",
-  "Start-to-end accounting and owner reports",
-  "DSR and required operational reports",
-  "Graphical dashboard and business statistics",
-  "SMS, email and WhatsApp communication",
-  "Mobile access, daily backups and audit history",
-  "Secure, confidential data and customised support",
-  "Online demo, training and assisted installation",
-];
 
 const modules = [
   [
@@ -172,55 +152,79 @@ const pricingFaqs = [
   ],
 ];
 
-export default function FuelNervePage() {
+const operatingGuides = [
+  ["DSR & daily sales", "/petrol-pump-dsr-software"],
+  ["Fuel inventory", "/petrol-pump-inventory-management"],
+  ["Shift reconciliation", "/petrol-pump-shift-reconciliation"],
+  ["Accounting", "/petrol-pump-accounting-software"],
+  ["Credit management", "/petrol-pump-credit-management"],
+  ["Software pricing", "/petrol-pump-software-pricing-india"],
+];
+
+export default function FuelNervePage({
+  siteUrl = "https://mindvector.tech/apps/fuelnerve",
+}: {
+  siteUrl?: string;
+} = {}) {
+  const isDedicatedSite = siteUrl.startsWith(
+    "https://fuelnerve.mindvector.tech",
+  );
+  const canonicalUrl = isDedicatedSite
+    ? `${siteUrl.replace(/\/$/, "")}/`
+    : siteUrl.replace(/\/$/, "");
+  const siteHome = "/";
+  const overviewHref = isDedicatedSite
+    ? "/"
+    : "/petrol-pump-management-software";
+  const softwareId = `${canonicalUrl}#software`;
   const softwareApplicationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": "https://mindvector.tech/apps/fuelnerve#software",
-    name: "FuelNerve",
-    alternateName: "FuelNerve Core",
-    description:
-      "A petrol pump management platform for shifts, fuel inventory, sales, collections, credit, expenses, accounts and AI-powered owner intelligence.",
-    url: "https://mindvector.tech/apps/fuelnerve",
-    applicationCategory: "BusinessApplication",
-    applicationSubCategory: "Petrol Pump Management Software",
-    operatingSystem: "Web",
-    inLanguage: "en-IN",
-    image: "https://mindvector.tech/fuelnerve-mark.svg",
-    brand: { "@type": "Brand", name: "FuelNerve" },
-    publisher: {
-      "@type": "Organization",
-      name: "MindVector",
-      url: "https://mindvector.tech",
-    },
-    offers: [
+    "@graph": [
+      ...(isDedicatedSite
+        ? [
+            {
+              "@type": "WebSite",
+              "@id": "https://fuelnerve.mindvector.tech/#website",
+              name: "FuelNerve",
+              alternateName: ["FuelNerve India", "fuelnerve.mindvector.tech"],
+              url: "https://fuelnerve.mindvector.tech/",
+              inLanguage: "en-IN",
+              publisher: { "@id": "https://mindvector.tech/#organization" },
+            },
+          ]
+        : []),
       {
-        "@type": "Offer",
-        name: "FuelNerve Core Monthly",
-        price: "699",
-        priceCurrency: "INR",
-        url: "https://mindvector.tech/apps/fuelnerve#pricing",
-      },
-      {
-        "@type": "Offer",
-        name: "FuelNerve Core Annual",
-        price: "5988",
-        priceCurrency: "INR",
-        url: "https://mindvector.tech/apps/fuelnerve#pricing",
-      },
-      {
-        "@type": "Offer",
-        name: "FuelNerve Core Lifetime",
-        price: "24000",
-        priceCurrency: "INR",
-        url: "https://mindvector.tech/apps/fuelnerve#pricing",
-      },
-      {
-        "@type": "Offer",
-        name: "FuelNerve Core + Intelligence Annual",
-        price: "14999",
-        priceCurrency: "INR",
-        url: "https://mindvector.tech/apps/fuelnerve#pricing",
+        "@type": "SoftwareApplication",
+        "@id": softwareId,
+        name: "FuelNerve",
+        alternateName: "FuelNerve Core",
+        description:
+          "A petrol pump management platform for shifts, fuel inventory, sales, collections, credit, expenses, accounts and AI-powered owner intelligence.",
+        url: canonicalUrl,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: "Petrol Pump Management Software",
+        operatingSystem: "Web",
+        inLanguage: "en-IN",
+        image: `${isDedicatedSite ? "https://fuelnerve.mindvector.tech" : "https://mindvector.tech"}/fuelnerve-icon-512.png`,
+        brand: { "@type": "Brand", name: "FuelNerve" },
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://mindvector.tech/#organization",
+          name: "MindVector",
+          url: "https://mindvector.tech",
+        },
+        offers: [
+          ["FuelNerve Core Monthly", "699"],
+          ["FuelNerve Core Annual", "5988"],
+          ["FuelNerve Core Lifetime", "24000"],
+          ["FuelNerve Core + Intelligence Annual", "14999"],
+        ].map(([name, price]) => ({
+          "@type": "Offer",
+          name,
+          price,
+          priceCurrency: "INR",
+          url: `${canonicalUrl}#pricing`,
+        })),
       },
     ],
   };
@@ -237,8 +241,15 @@ export default function FuelNervePage() {
         }}
       />
       <header className="fuel-nav">
-        <a href="/" className="fuel-brand" aria-label="MindVector home">
-          <img className="fuel-logo" src="/fuelnerve-mark.svg" alt="" />
+        <a href={siteHome} className="fuel-brand" aria-label="FuelNerve home">
+          <Image
+            className="fuel-logo"
+            src="/fuelnerve-mark.svg"
+            alt=""
+            width={40}
+            height={40}
+            priority
+          />
           FuelNerve
         </a>
         <nav aria-label="FuelNerve navigation">
@@ -259,6 +270,11 @@ export default function FuelNervePage() {
           </p>
           <h1>
             FuelNerve.
+            {isDedicatedSite && (
+              <span className="fuel-seo-keyword">
+                Petrol pump management software.
+              </span>
+            )}
             <br />
             <em>Every shift under control.</em>
           </h1>
@@ -292,12 +308,14 @@ export default function FuelNervePage() {
               Explore the OS <span>↓</span>
             </a>
           </div>
-          <p className="fuel-category-link">
-            Looking for the complete category overview?{" "}
-            <Link href="/petrol-pump-management-software">
-              Explore FuelNerve petrol pump management software →
-            </Link>
-          </p>
+          {!isDedicatedSite && (
+            <p className="fuel-category-link">
+              Looking for the complete category overview?{" "}
+              <Link href={overviewHref}>
+                Explore FuelNerve petrol pump management software →
+              </Link>
+            </p>
+          )}
         </div>
         <div
           className="fuel-dashboard"
@@ -502,7 +520,13 @@ export default function FuelNervePage() {
         <article className="pricing-card">
           <div className="complete-plan-head">
             <div>
-              <img className="fuel-logo" src="/fuelnerve-mark.svg" alt="" />
+              <Image
+                className="fuel-logo"
+                src="/fuelnerve-mark.svg"
+                alt=""
+                width={42}
+                height={42}
+              />
               <div>
                 <span>FuelNerve plans</span>
                 <p>Choose what fits your station today.</p>
@@ -581,13 +605,13 @@ export default function FuelNervePage() {
           <div className="fuel-comparison-wrap">
             <div
               className="fuel-comparison"
-              role="table"
+              role="region"
               aria-label="Compare FuelNerve plans"
             >
-              <div className="fuel-comparison-header" role="row">
-                <b role="columnheader">What&apos;s included</b>
-                <strong role="columnheader">Core</strong>
-                <strong role="columnheader">
+              <div className="fuel-comparison-header">
+                <b>What&apos;s included</b>
+                <strong>Core</strong>
+                <strong>
                   Core + Intelligence <small>Early access</small>
                 </strong>
               </div>
@@ -595,10 +619,9 @@ export default function FuelNervePage() {
                 <div className="fuel-comparison-group" key={group}>
                   <h3>{group}</h3>
                   {rows.map((row) => (
-                    <div className="fuel-comparison-row" role="row" key={row}>
-                      <span role="cell">{row}</span>
+                    <div className="fuel-comparison-row" key={row}>
+                      <span>{row}</span>
                       <b
-                        role="cell"
                         aria-label={
                           groupIndex === 2
                             ? "Not included in Core"
@@ -608,7 +631,6 @@ export default function FuelNervePage() {
                         {groupIndex === 2 ? "—" : "✓"}
                       </b>
                       <strong
-                        role="cell"
                         aria-label="Included in Core plus FuelNerve Intelligence"
                       >
                         {groupIndex === 2 ? "Early access" : "✓"}
@@ -656,7 +678,13 @@ export default function FuelNervePage() {
         </div>
         <article className="intelligence-package-card">
           <div className="intelligence-package-top">
-            <img className="fuel-logo" src="/fuelnerve-mark.svg" alt="" />
+            <Image
+              className="fuel-logo"
+              src="/fuelnerve-mark.svg"
+              alt=""
+              width={42}
+              height={42}
+            />
             <div>
               <p>FUELNERVE INTELLIGENCE</p>
               <span>AI owner briefings and actions</span>
@@ -743,7 +771,7 @@ export default function FuelNervePage() {
         </div>
         <article>
           <header>
-            <img src="/fuelnerve-mark.svg" alt="" />
+            <Image src="/fuelnerve-mark.svg" alt="" width={54} height={54} />
             <div>
               <b>Owner Assistant</b>
               <span>A clearer view of your fuel station</span>
@@ -801,6 +829,29 @@ export default function FuelNervePage() {
           ))}
         </div>
       </section>
+      {isDedicatedSite && (
+        <section className="fuel-guide-hub" aria-labelledby="fuel-guide-title">
+          <div>
+            <p className="fuel-eyebrow">
+              <span /> Practical petrol pump operating guides
+            </p>
+            <h2 id="fuel-guide-title">
+              Understand the records
+              <br />
+              <em>behind every closing number.</em>
+            </h2>
+          </div>
+          <nav aria-label="FuelNerve petrol pump software guides">
+            {operatingGuides.map(([label, href], index) => (
+              <Link href={href} key={href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {label}
+                <b>↗</b>
+              </Link>
+            ))}
+          </nav>
+        </section>
+      )}
       <section className="fuel-cta">
         <p className="fuel-eyebrow">
           <span /> Built for the daily reality of a pump
@@ -814,12 +865,18 @@ export default function FuelNervePage() {
         </a>
       </section>
       <footer className="fuel-footer">
-        <a href="/" className="fuel-brand">
-          <img className="fuel-logo" src="/fuelnerve-mark.svg" alt="" />
+        <a href={siteHome} className="fuel-brand">
+          <Image
+            className="fuel-logo"
+            src="/fuelnerve-mark.svg"
+            alt=""
+            width={40}
+            height={40}
+          />
           FuelNerve
         </a>
         <p>© 2026 FuelNerve</p>
-        <Link href="/petrol-pump-management-software">
+        <Link href={overviewHref}>
           Petrol pump management software ↗
         </Link>
       </footer>

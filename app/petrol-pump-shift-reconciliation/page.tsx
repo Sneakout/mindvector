@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const content: TopicPageContent = {
+export const content: TopicPageContent = {
   canonical,
   eyebrow: "PETROL PUMP SHIFT RECONCILIATION",
   title: "Close every shift",
