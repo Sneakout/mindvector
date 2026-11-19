@@ -41,6 +41,25 @@ test("MindVector exposes consistent professional search metadata", async () => {
   assert.match(home, /href="#products">Our products/);
   assert.match(home, /href="\/apps\/fuelnerve">FuelNerve/);
   assert.match(home, /href="\/apps\/fresh-fold\/">Fresh Fold/);
+  assert.match(home, /href="\/about">About/);
+  assert.match(home, /MindVector is operated by Sneakout/);
+  assert.match(structuredData, /legalName: "Sneakout"/);
+});
+
+test("About page presents Sneakout as the registered business", async () => {
+  const [about, sitemap, mobileMenu] = await Promise.all([
+    read("../app/about/page.tsx"),
+    read("../app/sitemap.ts"),
+    read("../app/components/MobileMenu.tsx"),
+  ]);
+
+  assert.match(about, /Sneakout.*registered business behind/s);
+  assert.match(about, /legalName: "Sneakout"/);
+  assert.match(about, /MindVector.*product\s+studio and technology brand/s);
+  assert.match(about, /FuelNerve/);
+  assert.match(about, /Fresh Fold/);
+  assert.match(sitemap, /https:\/\/mindvector\.tech\/about/);
+  assert.match(mobileMenu, /href="\/about"/);
 });
 
 test("FuelNerve has a dedicated canonical search landing page", async () => {

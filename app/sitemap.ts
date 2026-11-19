@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-10-17");
+  const lastModified = new Date("2026-11-19");
   const fuelNerveGuides = [
     "petrol-pump-dsr-software",
     "petrol-pump-inventory-management",
@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    {
+      url: "https://mindvector.tech/about",
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.7,
     },
     {
       url: "https://mindvector.tech/apps/fuelnerve",

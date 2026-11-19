@@ -73,6 +73,7 @@ export default function Home() {
           <a href="#services">Capabilities</a>
           <a href="#approach">Approach</a>
           <AppsMenu />
+          <a href="/about">About</a>
           <a href="#contact">Contact</a>
         </nav>
         <MobileMenu />
@@ -408,10 +409,14 @@ export default function Home() {
           <a href="/apps/fuelnerve">FuelNerve</a>
           <a href="/petrol-pump-management-software">Petrol pump software</a>
           <a href="/apps/fresh-fold/">Fresh Fold</a>
+          <a href="/about">About</a>
           <a href="#services">Capabilities</a>
           <a href="mailto:hello@mindvector.tech">Contact</a>
         </div>
-        <p>© 2026 MindVector</p>
+        <p>
+          MindVector is operated by Sneakout
+          <br />© 2026 Sneakout
+        </p>
       </footer>
     </main>
   );

@@ -5,7 +5,9 @@ export function MindVectorStructuredData() {
       {
         "@type": "Organization",
         "@id": "https://mindvector.tech/#organization",
-        name: "MindVector",
+        name: "Sneakout",
+        legalName: "Sneakout",
+        alternateName: "MindVector",
         url: "https://mindvector.tech/",
         email: "hello@mindvector.tech",
         logo: {
@@ -15,7 +17,16 @@ export function MindVectorStructuredData() {
           height: 512,
         },
         description:
-          "MindVector builds focused software products and partners with teams to create mobile apps, web platforms, business systems and applied AI.",
+          "Sneakout is the registered business behind MindVector and its software products, including FuelNerve and Fresh Fold.",
+        brand: {
+          "@type": "Brand",
+          "@id": "https://mindvector.tech/#mindvector-brand",
+          name: "MindVector",
+        },
+        owns: [
+          { "@id": "https://mindvector.tech/apps/fuelnerve#software" },
+          { "@id": "https://mindvector.tech/apps/fresh-fold/#software" },
+        ],
       },
       {
         "@type": "WebSite",
@@ -51,6 +62,7 @@ export function MindVectorStructuredData() {
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://mindvector.tech/apps/fresh-fold/#software",
         name: "Fresh Fold",
         url: "https://mindvector.tech/apps/fresh-fold/",
         applicationCategory: "LifestyleApplication",

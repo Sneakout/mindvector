@@ -39,6 +39,9 @@ export function MobileMenu() {
           <a href="#approach" onClick={closeMenu}>
             Approach <span>→</span>
           </a>
+          <a href="/about" onClick={closeMenu}>
+            About <span>→</span>
+          </a>
           <div className="mobile-menu-apps">
             <p>Apps</p>
             <a href="/apps/fuelnerve" onClick={closeMenu}>
