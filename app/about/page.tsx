@@ -87,75 +87,73 @@ export default function AboutPage() {
 
       <section className={styles.hero} id="content">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>ABOUT THE BUSINESS</p>
+          <p className={styles.eyebrow}>ABOUT MINDVECTOR</p>
           <h1>
-            One business.
+            We build useful software.
             <br />
-            <em>A growing product company.</em>
+            <em>Then keep making it better.</em>
           </h1>
           <p className={styles.lede}>
-            <strong>Sneakout</strong> is the registered business behind
-            MindVector and the products we create. MindVector is our product
-            studio and technology brand—where we build our own software and
-            help other teams build theirs.
+            MindVector is a small product studio from <strong>Sneakout</strong>.
+            We build software around real, everyday work—and partner with teams
+            who care about making things simpler, clearer and genuinely useful.
           </p>
         </div>
 
-        <div className={styles.structure} aria-label="Sneakout business structure">
-          <article className={styles.legalNode}>
-            <span>REGISTERED BUSINESS</span>
-            <strong>Sneakout</strong>
-            <p>The legal business operating this website and its products.</p>
-          </article>
-          <i aria-hidden="true" />
-          <article className={styles.studioNode}>
-            <span>PRODUCT STUDIO &amp; BRAND</span>
-            <strong>MindVector</strong>
-            <p>Product strategy, design, engineering and applied AI.</p>
-          </article>
-          <div className={styles.productNodes}>
+        <aside className={styles.now} aria-label="What MindVector is building">
+          <p className={styles.sectionLabel}>WHAT WE&apos;RE BUILDING</p>
+          <h2>Products that stay close to the work.</h2>
+          <div className={styles.nowList}>
             <article>
-              <span>LIVE PRODUCT</span>
-              <strong>FuelNerve</strong>
+              <span>FuelNerve</span>
+              <p>A clearer operating day for petrol pump owners.</p>
             </article>
             <article>
-              <span>IN DEVELOPMENT</span>
-              <strong>Fresh Fold</strong>
+              <span>Fresh Fold</span>
+              <p>A calmer, connected garment-care experience.</p>
+            </article>
+            <article>
+              <span>Product partnerships</span>
+              <p>Thoughtful software built alongside ambitious teams.</p>
             </article>
           </div>
-        </div>
+          <p className={styles.legalNote}>
+            MindVector is operated by Sneakout, the registered business behind
+            our work.
+          </p>
+        </aside>
       </section>
 
-      <section className={styles.relationship}>
-        <p className={styles.sectionLabel}>HOW THE NAMES FIT TOGETHER</p>
-        <div className={styles.relationshipIntro}>
+      <section className={styles.story}>
+        <p className={styles.sectionLabel}>WHY WE&apos;RE HERE</p>
+        <div className={styles.storyIntro}>
           <h2>
-            Clear names.
+            Good software should feel
             <br />
-            <em>One accountable business.</em>
+            <em>obvious in hindsight.</em>
           </h2>
           <p>
-            Sneakout provides the registered business foundation. MindVector is
-            the public-facing product company and studio. Every product shown on
-            this website is created, operated or developed through that same
-            business.
+            We started MindVector because the most useful products rarely begin
+            with a feature list. They begin with a stubborn problem, a close
+            look at the work and a decision to make the next day better than the
+            last one.
           </p>
         </div>
-        <div className={styles.roleGrid}>
+        <div className={styles.principleGrid}>
           <article>
-            <span>LEGAL &amp; BUSINESS</span>
-            <h3>Sneakout</h3>
+            <span>STAY CLOSE TO THE WORK</span>
+            <h3>Start with the real day.</h3>
             <p>
-              The registered business name associated with mindvector.tech,
-              MindVector and the products presented here.
+              We learn how people actually work—the handovers, exceptions,
+              shortcuts and small frustrations—before deciding what to build.
             </p>
           </article>
           <article>
-            <span>PRODUCT &amp; TECHNOLOGY</span>
-            <h3>MindVector</h3>
+            <span>OWN THE OUTCOME</span>
+            <h3>Keep showing up after launch.</h3>
             <p>
-              The studio and technology brand through which we create focused
-              software products and work with ambitious teams.
+              Building our own products keeps us honest. We live with the
+              decisions, learn from real use and keep improving what matters.
             </p>
           </article>
         </div>

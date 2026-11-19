@@ -93,8 +93,8 @@
 
 .eyebrow,
 .sectionLabel,
-.structure span,
-.roleGrid span,
+.nowList span,
+.principleGrid span,
 .productGrid span,
 .productGrid b {
   margin: 0;
@@ -121,7 +121,7 @@
 }
 
 .hero h1,
-.relationship h2,
+.story h2,
 .portfolio h2,
 .contact h2 {
   margin: 0;
@@ -136,7 +136,7 @@
 }
 
 .hero h1 em,
-.relationship h2 em,
+.story h2 em,
 .portfolio h2 em,
 .contact h2 em {
   color: #aeb1b4;
@@ -157,93 +157,67 @@
   font-weight: 620;
 }
 
-.structure {
-  display: grid;
-  justify-items: center;
+.now {
   width: 100%;
   max-width: 590px;
   margin-left: auto;
-}
-
-.structure article {
-  width: 100%;
-  padding: 27px 30px;
-  border: 1px solid var(--about-line);
+  padding: 34px;
+  border: 1px solid rgba(200, 255, 208, 0.35);
   background: rgba(17, 21, 26, 0.9);
+  box-shadow: 0 0 70px rgba(200, 255, 208, 0.05);
 }
 
-.structure article > strong {
-  display: block;
-  margin: 22px 0 8px;
-  font-size: clamp(34px, 4vw, 60px);
-  font-weight: 430;
+.now h2 {
+  max-width: 470px;
+  margin: 26px 0 50px;
+  font-size: clamp(39px, 4.2vw, 64px);
+  font-weight: 380;
+  line-height: 0.98;
   letter-spacing: -0.065em;
 }
 
-.structure article p {
-  max-width: 420px;
+.nowList {
+  border-top: 1px solid var(--about-line);
+}
+
+.nowList article {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--about-line);
+}
+
+.nowList span {
+  color: var(--about-ink);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-weight: 590;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.nowList p,
+.legalNote {
   margin: 0;
   color: var(--about-muted);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.legalNode {
-  border-color: rgba(200, 255, 208, 0.45) !important;
-  box-shadow: 0 0 65px rgba(200, 255, 208, 0.07);
+.legalNote {
+  margin-top: 25px;
+  color: #7e8589;
+  font-size: 14px;
 }
 
-.legalNode span {
-  color: var(--about-lime);
-}
-
-.structure > i {
-  display: block;
-  width: 1px;
-  height: 42px;
-  background: linear-gradient(var(--about-lime), var(--about-line));
-}
-
-.studioNode {
-  width: 88% !important;
-}
-
-.productNodes {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  width: 76%;
-  padding-top: 42px;
-}
-
-.productNodes::before {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: 42px;
-  background: var(--about-line);
-  content: "";
-}
-
-.productNodes article {
-  padding: 20px;
-}
-
-.productNodes article strong {
-  margin: 15px 0 0;
-  font-size: 25px;
-}
-
-.relationship,
+.story,
 .portfolio,
 .details {
   padding: clamp(110px, 14vw, 210px) clamp(24px, 6.4vw, 108px);
   border-bottom: 1px solid var(--about-line);
 }
 
-.relationshipIntro {
+.storyIntro {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 10vw;
@@ -251,42 +225,42 @@
   margin-top: 68px;
 }
 
-.relationship h2,
+.story h2,
 .portfolio h2 {
   font-size: clamp(54px, 6.2vw, 100px);
 }
 
-.relationshipIntro > p {
+.storyIntro > p {
   margin: 0;
   color: #b0b4b6;
   font-size: 19px;
   line-height: 1.68;
 }
 
-.roleGrid {
+.principleGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 100px;
   border: 1px solid var(--about-line);
 }
 
-.roleGrid article {
+.principleGrid article {
   min-height: 340px;
   padding: 32px;
 }
 
-.roleGrid article + article {
+.principleGrid article + article {
   border-left: 1px solid var(--about-line);
 }
 
-.roleGrid h3 {
+.principleGrid h3 {
   margin: 86px 0 18px;
   font-size: clamp(38px, 4.4vw, 70px);
   font-weight: 390;
   letter-spacing: -0.065em;
 }
 
-.roleGrid p {
+.principleGrid p {
   max-width: 500px;
   margin: 0;
   color: var(--about-muted);
@@ -479,12 +453,12 @@
     padding-top: 140px;
   }
 
-  .structure {
+  .now {
     max-width: 680px;
     margin: 30px auto 0;
   }
 
-  .relationshipIntro,
+  .storyIntro,
   .portfolioHeading,
   .details {
     grid-template-columns: 1fr;
@@ -507,7 +481,7 @@
   }
 
   .hero,
-  .relationship,
+  .story,
   .portfolio,
   .details {
     padding-right: 21px;
@@ -525,47 +499,42 @@
   }
 
   .lede,
-  .relationshipIntro > p,
-  .roleGrid p,
+  .storyIntro > p,
+  .principleGrid p,
   .productGrid p,
   .contact > p:not(.sectionLabel) {
     font-size: 16px;
   }
 
-  .structure article,
-  .roleGrid article,
+  .principleGrid article,
   .productGrid article {
     padding: 24px;
   }
 
-  .studioNode {
-    width: 94% !important;
+  .now {
+    padding: 24px;
   }
 
-  .productNodes {
+  .nowList article {
     grid-template-columns: 1fr;
-    width: 86%;
+    gap: 8px;
   }
 
-  .productNodes::before {
-    left: 50%;
-  }
-
-  .roleGrid {
+  .principleGrid {
     grid-template-columns: 1fr;
     margin-top: 65px;
   }
 
-  .roleGrid article {
+  .principleGrid article {
     min-height: 285px;
   }
 
-  .roleGrid article + article {
+  .principleGrid article + article {
     border-top: 1px solid var(--about-line);
     border-left: 0;
   }
 
-  .roleGrid h3 {
+  .principleGrid h3 {
     margin-top: 64px;
   }
 

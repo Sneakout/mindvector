@@ -55,7 +55,9 @@ test("About page presents Sneakout as the registered business", async () => {
 
   assert.match(about, /Sneakout.*registered business behind/s);
   assert.match(about, /legalName: "Sneakout"/);
-  assert.match(about, /MindVector.*product\s+studio and technology brand/s);
+  assert.match(about, /MindVector is a small product studio/);
+  assert.match(about, /MindVector is operated by Sneakout/);
+  assert.doesNotMatch(about, /HOW THE NAMES FIT TOGETHER/);
   assert.match(about, /FuelNerve/);
   assert.match(about, /Fresh Fold/);
   assert.match(sitemap, /https:\/\/mindvector\.tech\/about/);
