@@ -4,6 +4,15 @@ import test from "node:test";
 
 const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
 
+test("the public shift guide renders an accessible worked example without sign-in", async () => {
+  const html = (await read("../.next/server/app/petrol-pump-shift-reconciliation.html")).replaceAll("<!-- -->", "");
+  assert.match(html, /id="worked-example"/);
+  assert.match(html, /<caption>Compare the sales allocation with what was received<\/caption>/);
+  assert.match(html, /<tfoot><tr><th scope="row">Total<\/th><td>₹51,500<\/td><td>₹45,300<\/td><\/tr><\/tfoot>/);
+  assert.match(html, /<strong>₹200 cash shortage<\/strong>/);
+  assert.match(html, /Operations → Reconciliation/);
+});
+
 test("MindVector presents FuelNerve as a first-party product", async () => {
   const [home, structuredData, appsMenu, mobileMenu] = await Promise.all([
     read("../app/page.tsx"),

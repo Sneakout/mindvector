@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import FuelNerveTopicPage, { type TopicPageContent } from "../components/FuelNerveTopicPage";
+import ShiftWorkedExample from "./ShiftWorkedExample";
 
 const canonical = "https://mindvector.tech/petrol-pump-shift-reconciliation";
 
 export const metadata: Metadata = {
   title: "Petrol Pump Shift & Nozzle Reconciliation Software | FuelNerve",
-  description: "Connect attendants, nozzle readings, fuel sales, cash, UPI, cards and credit in a reviewable petrol pump shift-closing workflow.",
+  description: "Learn how to close a petrol pump shift in FuelNerve and reconcile nozzle readings with cash, UPI, card and credit. Includes a worked shortage example.",
   alternates: { canonical },
-  openGraph: { title: "Petrol Pump Shift & Nozzle Reconciliation Software", description: "Review expected sales and actual collections before a petrol pump shift closes.", url: canonical, siteName: "MindVector", locale: "en_IN", type: "website" },
+  openGraph: { title: "Petrol Pump Shift & Nozzle Reconciliation Software", description: "Follow a FuelNerve shift from opening readings to closing and payment reconciliation.", url: canonical, siteName: "MindVector", locale: "en_IN", type: "website" },
   robots: { index: true, follow: true },
 };
 
 export const content: TopicPageContent = {
   canonical,
+  workedExample: <ShiftWorkedExample />,
   eyebrow: "PETROL PUMP SHIFT RECONCILIATION",
   title: "Close every shift",
   accent: "with readings, collections and responsibility intact.",
@@ -24,22 +26,22 @@ export const content: TopicPageContent = {
     "Assign attendants to the right shift and nozzle.",
     "Calculate expected sales from meter movement and rates.",
     "Separate cash, UPI, cards, fleet and credit.",
-    "Review overages or shortages before final closure.",
+    "Investigate shortages or excesses before completing reconciliation.",
     "Preserve handover and approval history.",
   ],
   sections: [
     { number: "01", title: "Staff and nozzle assignment", copy: "Responsibility starts with knowing who operated which nozzle during the shift. Assignments provide the context needed for readings, sales and handover review.", points: ["Attendant assignment", "Nozzle responsibility", "Shift timing"] },
     { number: "02", title: "Opening and closing readings", copy: "Meter movement determines the product volume attributed to the shift. Effective sales rates then establish the expected value for reconciliation.", points: ["Meter readings", "Product volume", "Expected sales value"] },
     { number: "03", title: "Collection split", copy: "Record each payment channel independently rather than forcing the entire handover into cash. Customer and fleet credit remain sales even when they are not current-day collections.", points: ["Cash and UPI", "Cards and fleet", "Customer credit"] },
-    { number: "04", title: "Difference and approval", copy: "Compare expected value with collections and credit, document unresolved differences and allow authorised review before the shift becomes final.", points: ["Shortage or excess", "Closing notes", "Review and audit history"] },
+    { number: "04", title: "Difference and review", copy: "After shift closing, compare sales allocated to each payment method with what you verified. Record any unresolved shortage or excess before completing reconciliation.", points: ["Shortage or excess", "Reconciliation notes", "Locked record after reconciliation"] },
   ],
-  workflowTitle: "Make closing a controlled sequence, not a calculation scramble.",
-  workflowIntro: "Each step should carry forward the records already captured instead of asking the manager to reconstruct the shift at the end.",
+  workflowTitle: "How to close and reconcile a shift in FuelNerve.",
+  workflowIntro: "Adapted from the FuelNerve user guide. Record the shift in Operations → Shifts, then verify the payment split in Operations → Reconciliation.",
   workflow: [
-    { title: "Open and assign", copy: "Select the shift, attendants and nozzles, then capture the opening positions." },
-    { title: "Capture sales context", copy: "Record closing readings, product rates and any testing or non-sale movement relevant to the shift." },
-    { title: "Enter the handover", copy: "Separate cash, UPI, cards, fleet, customer credit and any other approved collection method." },
-    { title: "Review and close", copy: "Investigate the calculated difference, add supporting notes and complete the authorised handover." },
+    { title: "Open the shift", copy: "In Operations → Shifts, choose the station and actual opening time. Confirm opening nozzle readings, assign an attendant to each nozzle and enter the physical cash at start." },
+    { title: "Close the shift", copy: "Enter the actual closing time, each closing meter reading and any test quantities, noting whether test fuel was returned. Record staff collections, actual closing tank dips and the physical cash left in the drawer, including starting cash." },
+    { title: "Verify cash, UPI, card and credit", copy: "Open the shift in Operations → Reconciliation. Allocate sales by payment type and verify receipts against the handover and payment records. Exclude opening float from cash sales receipts; record unpaid customer credit and prepaid fleet balance used separately from new money collected." },
+    { title: "Explain the difference", copy: "Check any short or excess amount by payment method against the original records. Add the required explanation and complete reconciliation; the reconciled record is then shown as locked." },
   ],
   buyerTitle: "Test the difficult closing, not only the perfect one.",
   buyerIntro: "During a demo, ask what happens when a shift has customer credit, multiple digital payments, a changed rate or an unresolved difference.",
@@ -51,7 +53,8 @@ export const content: TopicPageContent = {
     "Can differences, notes and approvals be reviewed later?",
   ],
   faqs: [
-    ["How is petrol pump shift sales calculated?", "Metered volume is generally derived from closing minus opening nozzle readings, adjusted for relevant non-sale movement where applicable. The effective product rate is then used to calculate the expected sales value."],
+    ["How are petrol pump shift sales calculated?", "Start with closing minus opening nozzle readings. Subtract returned test litres for the worked example on this page, then multiply saleable litres by the applicable product rate."],
+    ["Is opening cash float part of shift sales?", "No. Include opening float in the physical drawer count if it is still there, but exclude it from the cash collected from sales in Reconciliation. Account separately for any cash added, deposited or handed over."],
     ["Why can sales be higher than collections?", "Some sales may be recorded on customer credit or fleet accounts, and some payment records may still be missing or assigned incorrectly. Reconciliation helps separate legitimate timing or credit differences from an unexplained shortage."],
     ["Can one attendant work on more than one nozzle?", "The operating setup should reflect how the station actually assigns responsibility. FuelNerve supports shift and nozzle assignment records so the station can configure a practical workflow."],
     ["Can a closed shift be changed?", "Authorised correction may be necessary, but the system should preserve audit history. Access and approval rules should prevent silent changes to completed records."],

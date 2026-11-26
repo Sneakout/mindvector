@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./fuelnerve-topic-page.module.css";
@@ -17,6 +18,7 @@ export type TopicLink = {
 
 export type TopicPageContent = {
   canonical: string;
+  workedExample?: ReactNode;
   eyebrow: string;
   title: string;
   accent: string;
@@ -134,6 +136,7 @@ export default function FuelNerveTopicPage({
         <nav aria-label="FuelNerve topic navigation">
           <Link href={overviewHref}>Software overview</Link>
           <a href="#guide">Guide</a>
+          {content.workedExample && <a href="#worked-example">Worked example</a>}
           <a href="#questions">Questions</a>
         </nav>
         <a className={styles.signIn} href="https://fuel.mindvector.tech/login">
@@ -174,6 +177,8 @@ export default function FuelNerveTopicPage({
           <small>FuelNerve connects the operating record to the owner&apos;s review.</small>
         </aside>
       </section>
+
+      {content.workedExample}
 
       <section className={styles.problem}>
         <div>
